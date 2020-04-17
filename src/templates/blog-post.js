@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h1>{post.frontmatter.title}</h1>
+        <h2>{post.frontmatter.title}</h2>
         <p
           style={{
             ...scale(-1 / 5),
@@ -28,6 +28,7 @@ class BlogPostTemplate extends React.Component {
             marginTop: rhythm(-1),
           }}
         >
+          {post.frontmatter.author}
           {post.frontmatter.date}
         </p>
         <MDXRenderer>{post.body}</MDXRenderer>

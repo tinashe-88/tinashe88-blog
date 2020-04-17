@@ -1,5 +1,5 @@
 backend:
-  name: tinashe88-blog
+  name: github
   repo: tinashe-88/tinashe88-blog
 
 media_folder: static/assets
