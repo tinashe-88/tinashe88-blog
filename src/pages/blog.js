@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+// import { rhythm } from "../utils/typography"
 import Button from "../components/button"
 import BlogThumbnail from '../components/blog-thumbnail'
 
@@ -33,11 +33,27 @@ const CardTitleContainer = styled.h3`
   margin-top: 1.5rem;
 `
 
+const TagsContainer = styled.span`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const BadgeContainer = styled.div`
+  display: inline-block;
+  min-width: .5rem; /* rem unit */
+  padding: .3rem .3rem; /* rem unit */
+  border-radius: 10%;
+  font-size: 12px;
+  text-align: center;
+  background: #1779ba;
+  color: #fefefe;
+`
+
 class Blog extends React.Component {
   render() {
     const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
-    const author = data.site.siteMetadata.author
     const posts = data.allMdx.edges
 
     return (
@@ -59,7 +75,10 @@ class Blog extends React.Component {
                   </CardTitleContainer>
                   <small>{node.frontmatter.date}</small>
                   {` `}
-                  <small>{author}</small>
+                  <BadgeContainer>
+                    <TagsContainer>{node.frontmatter.tags}</TagsContainer>
+                  </BadgeContainer>
+                  
                   <p
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt,
@@ -103,6 +122,7 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
             description
+            tags
           }
         }
       }
