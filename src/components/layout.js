@@ -9,9 +9,12 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
+    const tagsPath = `${__PATH_PREFIX__}/tags/`
     let header
 
-    if (location.pathname === rootPath || location.pathname === blogPath) {
+    if (location.pathname === rootPath || 
+      location.pathname === blogPath || 
+      location.pathname === tagsPath) {
       header = (
         <h1
           style={{
@@ -59,6 +62,7 @@ class Layout extends React.Component {
           style={{
             marginLeft: `auto`,
             marginRight: `auto`,
+            marginTop: `10px`,
             maxWidth: rhythm(24),
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
@@ -66,6 +70,7 @@ class Layout extends React.Component {
           <header>{header}</header>
           <main>{children}</main>
         </div>
+        <HrContainer/>
         <Footer>
           © {new Date().getFullYear()}, Created by
           {` `}
@@ -83,6 +88,15 @@ const Wrapper = styled.div`
 const Footer = styled.footer`
   text-align: center;
   margin: 24px;
+`
+
+const HrContainer = styled.hr`
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
 `
 
 export default Layout

@@ -2,10 +2,12 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import { rhythm } from "../utils/typography"
-import Button from "../components/button"
 import BlogThumbnail from '../components/blog-thumbnail'
 
 const CardContainer = styled.div`
@@ -30,7 +32,7 @@ const CardTextContainer = styled.div`
 `
 
 const CardTitleContainer = styled.h3`
-  margin-top: 1.5rem;
+  margin-top: .5rem;
 `
 
 const TagsContainer = styled.span`
@@ -40,14 +42,31 @@ const TagsContainer = styled.span`
 `
 
 const BadgeContainer = styled.div`
-  display: inline-block;
-  min-width: .5rem; /* rem unit */
+  max-width: 3.5rem;
+  max-height: 2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: .3rem .3rem; /* rem unit */
   border-radius: 10%;
   font-size: 12px;
   text-align: center;
   background: #1779ba;
   color: #fefefe;
+`
+
+const ParagraphContainer = styled.p`
+  font-size : 10px;
+`
+
+const IconContainer = styled.div`
+  justify-content: center;
+  display: flex;
+  padding: 25px;
+  font-size: 25px;
+`
+
+const LinkContainer = styled(Link)`
+  box-shadow: none;
 `
 
 class Blog extends React.Component {
@@ -66,12 +85,11 @@ class Blog extends React.Component {
               <CardBodyContainer key={node.fields.slug}>
                 <CardTextContainer>
                   <CardTitleContainer>
-                    <Link
-                      style={{ boxShadow: `none` }}
+                    <LinkContainer
                       to={`blog${node.fields.slug}`}
                     >
                       {title}
-                    </Link>
+                    </LinkContainer>
                   </CardTitleContainer>
                   <small>{node.frontmatter.date}</small>
                   {` `}
@@ -79,7 +97,7 @@ class Blog extends React.Component {
                     <TagsContainer>{node.frontmatter.tags}</TagsContainer>
                   </BadgeContainer>
                   
-                  <p
+                  <ParagraphContainer
                     dangerouslySetInnerHTML={{
                       __html: node.frontmatter.description || node.excerpt,
                     }}
@@ -90,11 +108,11 @@ class Blog extends React.Component {
             )
           })}
         </CardContainer>
-        <Link to="/">
-          <Button marginTop="85px">Go Home</Button>
-        </Link>
-        <br/>
-        <hr/>
+        <IconContainer>
+          <LinkContainer to="/">
+            <FontAwesomeIcon icon={faHome}/>
+          </LinkContainer>
+        </IconContainer>
       </Layout>
     )
   }

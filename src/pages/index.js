@@ -5,6 +5,8 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 
+import styled from 'styled-components'
+
 class IndexPage extends React.Component {
   render() {
     const siteTitle = "tinashe88 blog"
@@ -28,12 +30,19 @@ class IndexPage extends React.Component {
           default starter blog running on Netlify CMS.
         </p>
         <p>Now go build something great!</p>
-        <Link to="/blog/">
-          <Button marginTop="35px">Go to Blog</Button>
-        </Link>
+        <ButtonContainer>
+          <Link to="/blog/">
+            <Button marginTop="35px">The Blog</Button>
+          </Link>
+        </ButtonContainer>
       </Layout>
     )
   }
 }
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
 
 export default IndexPage
