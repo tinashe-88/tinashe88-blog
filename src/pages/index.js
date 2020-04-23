@@ -15,7 +15,7 @@ class IndexPage extends React.Component {
       <Layout location={this.props.location} title={siteTitle}>
         <SEO
           title="Home"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`, `node`, `tinashe88`]}
+          keywords={[`blog`, `javascript`, `react`, `node`, `tinashe88`]}
         />
         <img style={{ margin: 0 }} src="./GatsbyScene.svg" alt="Gatsby Scene" />
         <h1>
@@ -31,9 +31,9 @@ class IndexPage extends React.Component {
         </p>
         <p>Now go build something great!</p>
         <ButtonContainer>
-          <Link to="/blog/">
+          <LinkContainer to="/blog/" style={{textDecoration:"none"}}>
             <Button marginTop="35px">The Blog</Button>
-          </Link>
+          </LinkContainer>
         </ButtonContainer>
       </Layout>
     )
@@ -43,6 +43,11 @@ class IndexPage extends React.Component {
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+`
+
+const LinkContainer = styled(Link)`
+  box-shadow: none;
+  text-decoration: none;
 `
 
 export default IndexPage

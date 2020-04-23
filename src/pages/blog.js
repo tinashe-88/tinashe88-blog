@@ -1,5 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
+
+import Badge from '../components/badge'
 import styled from 'styled-components'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -35,24 +37,6 @@ const CardTitleContainer = styled.h3`
   margin-top: .5rem;
 `
 
-const TagsContainer = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-const BadgeContainer = styled.div`
-  max-width: 3.5rem;
-  max-height: 2rem;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: .3rem .3rem; /* rem unit */
-  border-radius: 10%;
-  font-size: 12px;
-  text-align: center;
-  background: #1779ba;
-  color: #fefefe;
-`
 
 const ParagraphContainer = styled.p`
   font-size : 10px;
@@ -67,6 +51,11 @@ const IconContainer = styled.div`
 
 const LinkContainer = styled(Link)`
   box-shadow: none;
+`
+
+const TagContainer = styled.div`
+  display: flex;
+  flex-direction: row;
 `
 
 class Blog extends React.Component {
@@ -93,9 +82,17 @@ class Blog extends React.Component {
                   </CardTitleContainer>
                   <small>{node.frontmatter.date}</small>
                   {` `}
-                  <BadgeContainer>
-                    <TagsContainer>{node.frontmatter.tags}</TagsContainer>
-                  </BadgeContainer>
+                  <TagContainer>
+                    {node.frontmatter.tags.map((tag, i) => {
+                      return (
+                        <Badge key={i}>
+                          <LinkContainer to={`tags/${tag}`}>
+                            {tag}
+                          </LinkContainer>
+                        </Badge>
+                      )
+                    })}
+                  </TagContainer>
                   
                   <ParagraphContainer
                     dangerouslySetInnerHTML={{

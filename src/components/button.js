@@ -15,6 +15,7 @@ const ButtonWrapper = styled.button`
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 2px;
+  transition: all 0.3s cubic-bezier(0.28, -0.55, 0.65, 0.75);
 
   background: ${props => props.props.background || "black"};
   color: ${props => props.props.color || "rgb(255, 255, 255)"};
@@ -25,7 +26,10 @@ const ButtonWrapper = styled.button`
   margin-bottom: ${props => props.props.marginBottom};
 
   &:hover {
-    box-shadow: inset 0 0 100px 100px rgba(255, 255, 255, 0.25);
+    color: #d3d3d3;
+    background: #333;
+    box-shadow: 0 0 2px #333, 0 0 10px #333, 0 0 4px #333;
+    border-radius: 2px;
   }
 `
 

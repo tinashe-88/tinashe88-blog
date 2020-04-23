@@ -2,7 +2,7 @@
 author: 'Tinashe Chiweshe'
 title: My Second Post!
 date: "2015-05-06T23:46:37.121Z"
-tags: ["life"]
+tags: ["life","gaming"]
 ---
 
 Wow! I love blogging so much already.

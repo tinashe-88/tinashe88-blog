@@ -30,7 +30,10 @@ const BlogThumbnail = () => {
 
     return (
         <ImageContainer>
-            <Img fixed={data.image.childImageSharp.fixed}/>
+            <Img 
+              fixed={data.image.childImageSharp.fixed}
+              alt="blog thumbnail"
+            />
         </ImageContainer>
     )
 }

@@ -83,6 +83,7 @@ class Layout extends React.Component {
 
 const Wrapper = styled.div`
   min-height: 100vh;
+  text-decoration: none;
 `
 
 const Footer = styled.footer`
@@ -96,7 +97,7 @@ const HrContainer = styled.hr`
   margin-right: auto;
   border: 0;
   height: 1px;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  background: #f1f1f1; 
 `
 
 export default Layout
