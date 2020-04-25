@@ -26,9 +26,9 @@ const ButtonWrapper = styled.button`
   margin-bottom: ${props => props.props.marginBottom};
 
   &:hover {
-    color: #d3d3d3;
+    color: #d1d1d1;
     background: #333;
-    box-shadow: 0 0 2px #333, 0 0 10px #333, 0 0 4px #333;
+    box-shadow: 0 0 1px #333, 0 0 2px #333, 0 0 2px #333;
     border-radius: 2px;
   }
 `

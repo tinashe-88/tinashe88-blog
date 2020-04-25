@@ -16,13 +16,7 @@ class Layout extends React.Component {
       location.pathname === blogPath || 
       location.pathname === tagsPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
+        <TitleContainer>
           <Link
             style={{
               boxShadow: `none`,
@@ -33,7 +27,7 @@ class Layout extends React.Component {
           >
             {title}
           </Link>
-        </h1>
+        </TitleContainer>
       )
     } else {
       header = (
@@ -80,6 +74,18 @@ class Layout extends React.Component {
     )
   }
 }
+
+const TitleContainer = styled.h1`
+  font-size: 3.9rem;
+  line-height: 4.3rem;
+  margin-bottom: 2.6rem;
+  margin-top: 0px;
+
+  @media only screen and (max-width: 800px) {
+    font-size: 2.9rem;
+    text-align: center;
+  }
+`
 
 const Wrapper = styled.div`
   min-height: 100vh;

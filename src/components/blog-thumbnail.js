@@ -1,5 +1,6 @@
 import React from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
+
 import Img from 'gatsby-image'
 
 import styled from 'styled-components'
@@ -13,27 +14,31 @@ const ImageContainer = styled.div`
 const BlogThumbnail = () => {
     const data = useStaticQuery(graphql`
         query Images {
-            image: file(relativePath: {eq: "profile-pic.jpg"}) {
+          image: allFile(filter: {extension: {regex: "/(jpg)|(jpeg)|(png)/"}, relativeDirectory: {eq: "posts"}}) {
+            edges {
+              node {
                 id
+                name
+                relativePath
                 childImageSharp {
-                  fixed(width: 500) {
-                    ...GatsbyImageSharpFixed
-                  }
-                  fluid {
+                  fluid(maxWidth: 300, maxHeight: 300) {
                     ...GatsbyImageSharpFluid
-                  }
+                }
                 }
               }
+            }
+          }   
         }
     `)
-    console.log(data)
 
     return (
         <ImageContainer>
-            <Img 
-              fixed={data.image.childImageSharp.fixed}
-              alt="blog thumbnail"
-            />
+            {
+              data.image.edges.map(edge => (
+                console.log(edge)
+              ))
+            }
+          
         </ImageContainer>
     )
 }

@@ -4,13 +4,15 @@ import { Link, graphql } from "gatsby"
 import Badge from '../components/badge'
 import styled from 'styled-components'
 
+import Img from 'gatsby-image'
+
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import { rhythm } from "../utils/typography"
-import BlogThumbnail from '../components/blog-thumbnail'
 
 const CardContainer = styled.div`
   text-align: left;
@@ -28,18 +30,27 @@ const CardBodyContainer = styled.div`
 `
 
 const CardTextContainer = styled.div`
-  margin-left: 1rem;
+margin-bottom: 14px;
   padding: 1rem;
   min-width: 10px;
+  overflow: hidden;
 `
 
 const CardTitleContainer = styled.h3`
   margin-top: .5rem;
+
+  @media only screen and (max-width: 500px) {
+    font-size: 1.3rem;
+  }
 `
 
 
 const ParagraphContainer = styled.p`
   font-size : 10px;
+
+  @media only screen and (max-width: 500px) {
+    display: none;
+  }
 `
 
 const IconContainer = styled.div`
@@ -58,6 +69,18 @@ const TagContainer = styled.div`
   flex-direction: row;
 `
 
+const ImageContainer = styled.div`
+  width: 50%;
+  display: flex;
+  flex-direction: row-reverse;
+`
+
+const ImageContents = styled(Img)`
+    position: relative;
+    height: 250px;
+    width: 250px;
+`
+
 class Blog extends React.Component {
   render() {
     const { data } = this.props
@@ -70,6 +93,7 @@ class Blog extends React.Component {
         <CardContainer>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
+            const thumbnail = node.frontmatter.image
             return (
               <CardBodyContainer key={node.fields.slug}>
                 <CardTextContainer>
@@ -100,7 +124,13 @@ class Blog extends React.Component {
                     }}
                   />
                 </CardTextContainer>
-                <BlogThumbnail/>
+                <ImageContainer>
+                  {
+                    <ImageContents
+                      fluid={thumbnail.childImageSharp.fluid}
+                    />
+                  }
+                </ImageContainer>
               </CardBodyContainer>
             )
           })}
@@ -138,6 +168,14 @@ export const pageQuery = graphql`
             title
             description
             tags
+            image {
+              id
+              childImageSharp {
+                fluid(maxWidth: 250, maxHeight: 250){
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }

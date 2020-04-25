@@ -11,7 +11,9 @@ import { Link, graphql } from "gatsby"
 import styled from 'styled-components'
 
 const TagsContainer = styled.div`
-
+  @media only screen and (max-width: 800px) {
+    text-align: center;
+  }
 `
 
 const TitleContainer = styled.h2`
