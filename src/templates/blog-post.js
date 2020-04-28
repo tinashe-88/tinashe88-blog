@@ -2,12 +2,15 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
+
 // import kebabCase from "lodash/kebabCase"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Badge from '../components/badge'
+import SocialShare from '../components/share-social'
+import Comments from '../components/comments'
 
 import styled from 'styled-components'
 
@@ -61,7 +64,7 @@ class BlogPostTemplate extends React.Component {
               return (
                 <Badge key={i}>
                   <LinkContainer to={`tags/${tag}`}>
-                    {tag}
+                    <span>{tag}</span>
                   </LinkContainer>
                 </Badge>
               )
@@ -75,7 +78,8 @@ class BlogPostTemplate extends React.Component {
           }}
         />
         <Bio />
-
+        <SocialShare />
+        <Comments />
         <ListContainer>
           <ListItemsContainer>
             {previous && (

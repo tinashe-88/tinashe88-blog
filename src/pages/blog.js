@@ -6,7 +6,6 @@ import styled from 'styled-components'
 
 import Img from 'gatsby-image'
 
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
@@ -43,7 +42,6 @@ const CardTitleContainer = styled.h3`
     font-size: 1.3rem;
   }
 `
-
 
 const ParagraphContainer = styled.p`
   font-size : 10px;
