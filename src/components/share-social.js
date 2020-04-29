@@ -80,7 +80,7 @@ const PinterestButton = styled(SocialIcon)`
     }
 `
 
-const SocialShare = ({ pageContext }) => {
+const SocialShare = () => {
     const data  = useStaticQuery(graphql`
         query {
             site {

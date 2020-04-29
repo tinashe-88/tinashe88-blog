@@ -2,9 +2,6 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-
-// import kebabCase from "lodash/kebabCase"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -41,6 +38,7 @@ class BlogPostTemplate extends React.Component {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
+    const disqusShortname = 'tinashe88blog'
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
