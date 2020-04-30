@@ -120,7 +120,7 @@ const SocialShare = () => {
                 </Headline>
                 <SocialButtonsContainer>
                     <ButtonLink
-                        href    ={
+                        href={
                             "https://www.facebook.com/sharer/sharer.php?u="
                             + baseUrl 
                         }
