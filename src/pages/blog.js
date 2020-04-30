@@ -2,6 +2,8 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 
 import Badge from '../components/badge'
+import PostCard from '../components/post-card'
+
 import styled from 'styled-components'
 
 import Img from 'gatsby-image'
@@ -17,37 +19,27 @@ const CardContainer = styled.div`
   text-align: left;
 `
 
-const CardBodyContainer = styled.div`
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-  border-radius: 5px;
-  margin: 1rem auto;
-  max-height: 250px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-left: 10px solid slategray;
-`
-
 const CardTextContainer = styled.div`
-margin-bottom: 14px;
+  margin-bottom: 7px;
   padding: 1rem;
   min-width: 10px;
   overflow: hidden;
 `
 
 const CardTitleContainer = styled.h3`
-  margin-top: .5rem;
+  margin-top: .3rem;
 
-  @media only screen and (max-width: 500px) {
+  @media only screen and (max-width: 800px) {
     font-size: 1.3rem;
+    margin-bottom: 14px;
   }
 `
 
 const ParagraphContainer = styled.p`
-  font-size : 10px;
+  font-size : 12px;
 
   @media only screen and (max-width: 500px) {
-    display: none;
+    
   }
 `
 
@@ -60,6 +52,21 @@ const IconContainer = styled.div`
 
 const LinkContainer = styled(Link)`
   box-shadow: none;
+  color: #333;
+
+  &:hover {
+    color: #d1d1d1;
+    transition: 0.2s ease-in;
+  }
+`
+
+const BlogLink = styled(LinkContainer)`
+  color: #111;
+
+  &:hover {
+    color: #19A974;
+    transition: 0.2s ease-in;
+  }
 `
 
 const TagContainer = styled.div`
@@ -93,7 +100,7 @@ class Blog extends React.Component {
             const title = node.frontmatter.title || node.fields.slug
             const thumbnail = node.frontmatter.image
             return (
-              <CardBodyContainer key={node.fields.slug}>
+              <PostCard key={node.fields.slug}>
                 <CardTextContainer>
                   <CardTitleContainer>
                     <LinkContainer
@@ -108,9 +115,9 @@ class Blog extends React.Component {
                     {node.frontmatter.tags.map((tag, i) => {
                       return (
                         <Badge key={i}>
-                          <LinkContainer to={`tags/${tag}`}>
+                          <BlogLink to={`tags/${tag}`}>
                             {tag}
-                          </LinkContainer>
+                          </BlogLink>
                         </Badge>
                       )
                     })}
@@ -129,7 +136,7 @@ class Blog extends React.Component {
                     />
                   }
                 </ImageContainer>
-              </CardBodyContainer>
+              </PostCard>
             )
           })}
         </CardContainer>

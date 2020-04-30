@@ -11,7 +11,7 @@ const Badge = ({children, ...props}) => (
 )
 
 const BadgeContainer = styled.div`
-  width: 3.5rem;
+  width: 5.5rem;
   margin: 10px 6px 10px 0;
   padding: .3rem .3rem; /* rem unit */
   border-radius: 10%;

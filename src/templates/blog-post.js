@@ -33,12 +33,26 @@ const ListContainer = styled.ul`
 const ListItemsContainer = styled.div`
 
 `
+
+const PostTitle = styled.h2`
+
+`
+
+const PostMetadata = styled.span`
+  margin-top: 1.25rem;
+  display: block;
+  margin-bottom: 1.75rem;
+`
+
+const HrContainer = styled.hr`
+  margin-bottom: 1.75rem;
+`
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
     const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
-    const disqusShortname = 'tinashe88blog'
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
@@ -46,21 +60,18 @@ class BlogPostTemplate extends React.Component {
           title={post.frontmatter.title}
           description={post.frontmatter.description || post.excerpt}
         />
-        <h2>{post.frontmatter.title}</h2>
-        <span
+        <PostTitle>{post.frontmatter.title}</PostTitle>
+        <PostMetadata
           style={{
-            ...scale(-1 / 5),
-            display: `block`,
-            marginBottom: rhythm(1),
-            marginTop: rhythm(-1),
+            ...scale(-1 / 5)
           }}
         >
           {post.frontmatter.author}
           {post.frontmatter.date}
           <TagsContainer>
-            {post.frontmatter.tags.map((tag, i) => {
+            {post.frontmatter.tags.map(tag => {
               return (
-                <Badge key={i}>
+                <Badge key={tag}>
                   <LinkContainer to={`tags/${tag}`}>
                     <span>{tag}</span>
                   </LinkContainer>
@@ -68,29 +79,25 @@ class BlogPostTemplate extends React.Component {
               )
             })}
           </TagsContainer>
-        </span>
+        </PostMetadata>
         <MDXRenderer>{post.body}</MDXRenderer>
-        <hr
-          style={{
-            marginBottom: rhythm(1),
-          }}
-        />
+        <HrContainer />
         <Bio />
         <SocialShare />
         <Comments />
         <ListContainer>
           <ListItemsContainer>
             {previous && (
-              <Link to={`blog${previous.fields.slug}`} rel="prev">
+              <LinkContainer to={`blog${previous.fields.slug}`} rel="prev">
                 ← {previous.frontmatter.title}
-              </Link>
+              </LinkContainer>
             )}
           </ListItemsContainer>
           <ListItemsContainer>
             {next && (
-              <Link to={`blog${next.fields.slug}`} rel="next">
+              <LinkContainer to={`blog${next.fields.slug}`} rel="next">
                 {next.frontmatter.title} →
-              </Link>
+              </LinkContainer>
             )}
           </ListItemsContainer>
         </ListContainer>

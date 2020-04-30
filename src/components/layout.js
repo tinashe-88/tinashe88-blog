@@ -52,28 +52,31 @@ class Layout extends React.Component {
     }
     return (
       <Wrapper>
-        <div
+        <LayoutContainer
           style={{
-            marginLeft: `auto`,
-            marginRight: `auto`,
-            marginTop: `10px`,
             maxWidth: rhythm(24),
             padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
           }}
         >
           <header>{header}</header>
           <main>{children}</main>
-        </div>
+        </LayoutContainer>
         <HrContainer/>
         <Footer>
           © {new Date().getFullYear()}, Created by
           {` `}
-          <a href="/">tinashe88</a>
+          <LinkContainer href="/">tinashe88</LinkContainer>
         </Footer>
       </Wrapper>
     )
   }
 }
+
+const LayoutContainer = styled.div`
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+`
 
 const TitleContainer = styled.h1`
   font-size: 3.9rem;
@@ -95,6 +98,10 @@ const Wrapper = styled.div`
 const Footer = styled.footer`
   text-align: center;
   margin: 24px;
+`
+
+const LinkContainer = styled.a`
+  box-shadow: none;
 `
 
 const HrContainer = styled.hr`

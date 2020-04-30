@@ -3,17 +3,17 @@ import PropTypes from "prop-types"
 
 import SEO from "../components/seo"
 import Layout from "../components/layout"
+import Badge from '../components/badge'
 
 import kebabCase from "lodash/kebabCase"
 
 import { Link, graphql } from "gatsby"
 
 import styled from 'styled-components'
+import { rhythm } from "../utils/typography"
 
 const TagsContainer = styled.div`
-  @media only screen and (max-width: 800px) {
-    text-align: center;
-  }
+  text-align: center;
 `
 
 const TitleContainer = styled.h2`
@@ -21,11 +21,23 @@ const TitleContainer = styled.h2`
 `
 
 const ListContainer = styled.ul`
-    list-style: none;
+  list-style: none;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `
 
 const ItemsContainer = styled.li`
+  margin: 0 auto;
+`
 
+const LinkConatiner = styled(Link)`
+  box-shadow: none;
 `
 class TagsPage extends React.Component {
 
@@ -42,9 +54,15 @@ class TagsPage extends React.Component {
                 <ListContainer>
                   {tags.map(tag => (
                     <ItemsContainer key={tag.fieldValue}>
-                      <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-                        {tag.fieldValue} ({tag.totalCount})
-                      </Link>
+                      <Badge
+                        style={{width: rhythm(3)}}
+                      >
+                        <LinkConatiner 
+                          to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                        >
+                          {tag.fieldValue} ({tag.totalCount})
+                        </LinkConatiner>
+                      </Badge>
                     </ItemsContainer>
                   ))}
                 </ListContainer>

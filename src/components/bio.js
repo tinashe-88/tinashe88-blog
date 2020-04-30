@@ -13,27 +13,24 @@ function Bio() {
         const { author, social } = data.site.siteMetadata
         return (
           <Container>
-            <Image
+            <ImageContainer
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
               style={{
                 marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
               }}
               imgStyle={{
                 borderRadius: `50%`,
               }}
             />
-            <p>
+            <ParagraphContainer>
               Written by <strong>{author}</strong> who lives between 
               Zimbabwe & South Africa creating things.
               {` `}
               <a href={`https://twitter.com/${social.twitter}`}>
                 Definitely give him a follow on Twitter
               </a>
-            </p>
+            </ParagraphContainer>
           </Container>
         )
       }}
@@ -63,6 +60,27 @@ const bioQuery = graphql`
 
 const Container = styled.div`
   display: flex;
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+  }
+`
+
+const ImageContainer = styled(Image)`
+  margin-bottom: 0px;
+  border-radius: 100%;
+  min-width: 50px;
+
+  @media only screen and (max-width: 800px) {
+    margin: 0 auto;
+    margin-right: 0;
+  }
+`
+const ParagraphContainer = styled.p`
+
+  @media only screen and (max-width: 800px) {
+    margin-top: 20px;
+  }
 `
 
 export default Bio

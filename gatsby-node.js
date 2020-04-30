@@ -7,6 +7,7 @@ exports.createPages = ({ graphql, actions }) => {
 
   const blogPost = path.resolve(`./src/templates/blog-post.js`)
   const tagTemplate = path.resolve(`./src/templates/tags.js`)
+  const tagPostTemplate = path.resolve(`./src/templates/tag-posts.js`)
   return graphql(
     `
       {
@@ -68,6 +69,17 @@ exports.createPages = ({ graphql, actions }) => {
         context: {
           tag: tag.fieldValue,
         },
+      })
+    })
+
+    // Create tag posts page
+    tags.forEach(tag => {
+      createPage({
+        path: `/tag/${_.kebabCase(tag)}`,
+        component: tagPostTemplate,
+        context: {
+          tag
+        }
       })
     })
 
