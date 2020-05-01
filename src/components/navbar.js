@@ -40,6 +40,8 @@ const LeftContainer = styled.div`
     position: relative;
     flex: 1 0 auto;
     display: flex;
+    margin: auto;
+    align-items: center;
 `
 
 const LeftNav = styled.div`
@@ -48,8 +50,7 @@ const LeftNav = styled.div`
     align-items: center;
     overflow-x: auto;
     overflow-y: hidden;
-    margin-right: 10px;
-    padding: 10px 0 80px;
+    padding: .5rem 0 .5rem;
     font-weight: 500;
     letter-spacing: .2px;
     text-transform: uppercase;
@@ -60,10 +61,10 @@ const NavContent = styled.ul`
     position: absolute;
     z-index: 1000;
     display: flex;
-    margin-top: 77px;
     padding: 0;
     list-style: none;
     transition: all 1s cubic-bezier(.19,1,.22,1);
+    margin-bottom: 0;
 
     @media only screen and (max-width: 500px) {
         margin-left: 15vw;
