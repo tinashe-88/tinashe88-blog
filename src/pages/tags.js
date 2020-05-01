@@ -9,15 +9,20 @@ import kebabCase from "lodash/kebabCase"
 
 import { Link, graphql } from "gatsby"
 
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import { rhythm } from "../utils/typography"
+
+const theme = {
+  tagsTheme: '#FF982B',
+  link: '#333',
+}
 
 const TagsContainer = styled.div`
   text-align: center;
 `
 
 const TitleContainer = styled.h2`
-
+  color: ${props => props.theme.tagsTheme};
 `
 
 const ListContainer = styled.ul`
@@ -38,6 +43,11 @@ const ItemsContainer = styled.li`
 
 const LinkConatiner = styled(Link)`
   box-shadow: none;
+  color: ${props => props.theme.link};
+
+  &:hover {
+    color: ${props => props.theme.tagsTheme};
+  }
 `
 class TagsPage extends React.Component {
 
@@ -47,6 +57,8 @@ class TagsPage extends React.Component {
         const tags = data.allMdx.group
 
         return (
+          <ThemeProvider theme={theme}>
+
             <Layout location={this.props.location} title={siteTitle}>
               <SEO title="tags"/>
               <TagsContainer>
@@ -68,6 +80,7 @@ class TagsPage extends React.Component {
                 </ListContainer>
               </TagsContainer>
             </Layout>
+          </ThemeProvider>
           )
     }
 }

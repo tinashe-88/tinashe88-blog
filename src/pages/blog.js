@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby"
 import Badge from '../components/badge'
 import PostCard from '../components/post-card'
 
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 import Img from 'gatsby-image'
 
@@ -14,6 +14,11 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 // import { rhythm } from "../utils/typography"
+
+const theme = {
+  blogLink: '#19A974',
+  link: '#333',
+}
 
 const CardContainer = styled.div`
   text-align: left;
@@ -52,19 +57,19 @@ const IconContainer = styled.div`
 
 const LinkContainer = styled(Link)`
   box-shadow: none;
-  color: #333;
+  color: ${props => props.theme.link};
 
   &:hover {
-    color: #d1d1d1;
+    color: ${props => props.theme.blogLink};
     transition: 0.2s ease-in;
   }
 `
 
 const BlogLink = styled(LinkContainer)`
-  color: #111;
+  color: ${props => props.theme.link};
 
   &:hover {
-    color: #19A974;
+    color: ${props => props.theme.blogLink};
     transition: 0.2s ease-in;
   }
 `
@@ -93,59 +98,61 @@ class Blog extends React.Component {
     const posts = data.allMdx.edges
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="All posts" />
-        <CardContainer>
-          {posts.map(({ node }) => {
-            const title = node.frontmatter.title || node.fields.slug
-            const thumbnail = node.frontmatter.image
-            return (
-              <PostCard key={node.fields.slug}>
-                <CardTextContainer>
-                  <CardTitleContainer>
-                    <LinkContainer
-                      to={`blog${node.fields.slug}`}
-                    >
-                      {title}
-                    </LinkContainer>
-                  </CardTitleContainer>
-                  <small>{node.frontmatter.date}</small>
-                  {` `}
-                  <TagContainer>
-                    {node.frontmatter.tags.map((tag, i) => {
-                      return (
-                        <Badge key={i}>
-                          <BlogLink to={`tags/${tag}`}>
-                            {tag}
-                          </BlogLink>
-                        </Badge>
-                      )
-                    })}
-                  </TagContainer>
-                  
-                  <ParagraphContainer
-                    dangerouslySetInnerHTML={{
-                      __html: node.frontmatter.description || node.excerpt,
-                    }}
-                  />
-                </CardTextContainer>
-                <ImageContainer>
-                  {
-                    <ImageContents
-                      fluid={thumbnail.childImageSharp.fluid}
+      <ThemeProvider theme={theme}>
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO title="All posts" />
+          <CardContainer>
+            {posts.map(({ node }) => {
+              const title = node.frontmatter.title || node.fields.slug
+              const thumbnail = node.frontmatter.image
+              return (
+                <PostCard key={node.fields.slug}>
+                  <CardTextContainer>
+                    <CardTitleContainer>
+                      <LinkContainer
+                        to={`blog${node.fields.slug}`}
+                      >
+                        {title}
+                      </LinkContainer>
+                    </CardTitleContainer>
+                    <small>{node.frontmatter.date}</small>
+                    {` `}
+                    <TagContainer>
+                      {node.frontmatter.tags.map((tag, i) => {
+                        return (
+                          <Badge key={i}>
+                            <BlogLink to={`tags/${tag}`}>
+                              {tag}
+                            </BlogLink>
+                          </Badge>
+                        )
+                      })}
+                    </TagContainer>
+                    
+                    <ParagraphContainer
+                      dangerouslySetInnerHTML={{
+                        __html: node.frontmatter.description || node.excerpt,
+                      }}
                     />
-                  }
-                </ImageContainer>
-              </PostCard>
-            )
-          })}
-        </CardContainer>
-        <IconContainer>
-          <LinkContainer to="/">
-            <FontAwesomeIcon icon={faHome}/>
-          </LinkContainer>
-        </IconContainer>
-      </Layout>
+                  </CardTextContainer>
+                  <ImageContainer>
+                    {
+                      <ImageContents
+                        fluid={thumbnail.childImageSharp.fluid}
+                      />
+                    }
+                  </ImageContainer>
+                </PostCard>
+              )
+            })}
+          </CardContainer>
+          <IconContainer>
+            <LinkContainer to="/">
+              <FontAwesomeIcon icon={faHome}/>
+            </LinkContainer>
+          </IconContainer>
+        </Layout>
+      </ThemeProvider>
     )
   }
 }

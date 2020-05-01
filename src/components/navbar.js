@@ -15,6 +15,7 @@ const theme = {
     github: '#6e5494',
     link: '#333',
     homeLink: '#2CAFDA',
+    blogLink: '#19A974',
     aboutLink: '#F65286',
     tagsLink: '#FF982B'
 }
@@ -28,6 +29,7 @@ const Container = styled.div`
     width: 100%;
     border-bottom: 1px solid #F4F4F4;
     box-shadow: 0px 2px 5px -2px rgba(0,0,0,.1);
+    background: #FFFCEB;
 `
 
 const NavbarContainer = styled.nav`
@@ -59,6 +61,7 @@ const LeftNav = styled.div`
     letter-spacing: .2px;
     text-transform: uppercase;
     white-space: nowrap;
+    margin-left: 30px;
 `
 
 const NavContent = styled.ul`
@@ -89,19 +92,21 @@ const LinkContainer = styled(Link)`
     padding: 12px;
     color: ${props => props.theme.link};
     opacity: .8;
-    transition: opacity .35s ease-in-out;
+    transition: ${transitionLinks};
     box-shadow: none;
 `
-
-const homeActiveStyles = {
-    color: `${props => props.theme.homeLink}`,
-    boxShadow: 'none',
-}
-
+// Right Links
 const HomeLink = styled(LinkContainer)` 
     box-shadow: none;
     &:hover {
         color: ${props => props.theme.homeLink};
+        box-shadow: 0px 2px rgba(0,0,0,.1);
+    }
+`
+const BlogLink = styled(LinkContainer)` 
+    box-shadow: none;
+    &:hover {
+        color: ${props => props.theme.blogLink};
         box-shadow: 0px 2px rgba(0,0,0,.1);
     }
 `
@@ -174,7 +179,6 @@ const InstagramButton = styled(SocialButton)`
 `
 
 const Navbar = () => {
-
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -189,16 +193,7 @@ const Navbar = () => {
             }
         }
     `)
-
     const socialHandle = data.site.siteMetadata.social
-    const isActive = ({ isCurrent }) => {
-        return isCurrent ? { 
-            className: "active",
-            style: {
-                color: 'red',
-            }
-        } : {}
-    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -222,6 +217,22 @@ const Navbar = () => {
                                     >
                                         Home
                                     </HomeLink>
+                                </NavItems>
+                                <NavItems>
+                                    <BlogLink 
+                                        to="/blog/"
+                                        getProps={({ isCurrent }) => {
+                                            return {
+                                                style: {
+                                                    color: isCurrent ?  
+                                                        `${theme.blogLink}` 
+                                                        : '',
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        Blog
+                                    </BlogLink>
                                 </NavItems>
                                 <NavItems>
                                     <AboutLink 
