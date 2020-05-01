@@ -13,6 +13,10 @@ const theme = {
     twitter: '#00acee',
     instagram: '#e1306c',
     github: '#6e5494',
+    link: '#333',
+    homeLink: '#2CAFDA',
+    aboutLink: '#F65286',
+    tagsLink: '#FF982B'
 }
 
 const transitionLinks = css`
@@ -35,7 +39,7 @@ const NavbarContainer = styled.nav`
     height: 64px;
     font-size: 0.75rem;
 `
-
+// Left navbar
 const LeftContainer = styled.div`
     position: relative;
     flex: 1 0 auto;
@@ -83,20 +87,37 @@ const LinkContainer = styled(Link)`
     position: relative;
     display: block;
     padding: 12px;
-    color: #000;
+    color: ${props => props.theme.link};
     opacity: .8;
     transition: opacity .35s ease-in-out;
+    box-shadow: none;
 `
 
-const LeftLinks = styled(LinkContainer)`
+const homeActiveStyles = {
+    color: `${props => props.theme.homeLink}`,
+    boxShadow: 'none',
+}
+
+const HomeLink = styled(LinkContainer)` 
     box-shadow: none;
-    transition: ${transitionLinks};
     &:hover {
-        color:  #357EDD;
+        color: ${props => props.theme.homeLink};
         box-shadow: 0px 2px rgba(0,0,0,.1);
     }
 `
-
+const AboutLink = styled(LinkContainer)`
+    &:hover {
+        color:  ${props => props.theme.aboutLink};
+        box-shadow: 0px 2px rgba(0,0,0,.1);
+    }
+`
+const TagsLink = styled(LinkContainer)`
+    &:hover {
+        color:  ${props => props.theme.tagsLink};
+        box-shadow: 0px 2px rgba(0,0,0,.1);
+    }
+`
+// Right navbar
 const RightContainer = styled.div`
     flex: 0 1 auto;
     display: flex;
@@ -118,7 +139,7 @@ const RightNav = styled.div`
 
 const SocialIcons = styled.a`
     box-shadow: none;
-    color: #333;
+    color: ${props => props.theme.link};
     padding: 0 10px;
 
     &:hover {
@@ -128,6 +149,7 @@ const SocialIcons = styled.a`
 
 const SocialButton = styled.span`
     margin: 10px;
+    color: ${props => props.theme.link};
 `
 
 const GithubButton = styled(SocialButton)`
@@ -169,6 +191,14 @@ const Navbar = () => {
     `)
 
     const socialHandle = data.site.siteMetadata.social
+    const isActive = ({ isCurrent }) => {
+        return isCurrent ? { 
+            className: "active",
+            style: {
+                color: 'red',
+            }
+        } : {}
+    }
 
     return (
         <ThemeProvider theme={theme}>
@@ -178,13 +208,52 @@ const Navbar = () => {
                         <LeftNav>
                             <NavContent>
                                 <NavItems>
-                                    <LeftLinks to="/">Home</LeftLinks>
+                                    <HomeLink 
+                                        to="/"
+                                        getProps={({ isCurrent }) => {
+                                            return {
+                                                style: {
+                                                    color: isCurrent ?  
+                                                        `${theme.homeLink}` 
+                                                        : '',
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        Home
+                                    </HomeLink>
                                 </NavItems>
                                 <NavItems>
-                                    <LeftLinks to="/about/">About</LeftLinks>
+                                    <AboutLink 
+                                        to="/about/"
+                                        getProps={({ isCurrent }) => {
+                                            return {
+                                                style: {
+                                                    color: isCurrent ?  
+                                                        `${theme.aboutLink}` 
+                                                        : '',
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        About
+                                    </AboutLink>
                                 </NavItems>
                                 <NavItems>
-                                    <LeftLinks to={`/tags/`}>Tags</LeftLinks>
+                                    <TagsLink 
+                                        to={`/tags/`}
+                                        getProps={({ isCurrent }) => {
+                                            return {
+                                                style: {
+                                                    color: isCurrent ?  
+                                                        `${theme.tagsLink}` 
+                                                        : '',
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        Tags
+                                    </TagsLink>
                                 </NavItems>
                             </NavContent>
                         </LeftNav>
