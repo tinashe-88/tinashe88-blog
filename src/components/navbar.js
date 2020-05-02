@@ -15,8 +15,8 @@ const theme = {
     github: '#6e5494',
     link: '#333',
     homeLink: '#2CAFDA',
-    blogLink: '#19A974',
-    aboutLink: '#F65286',
+    blogLink: '#F65286',
+    aboutLink: '#19A974',
     tagsLink: '#FF982B'
 }
 
@@ -40,6 +40,10 @@ const NavbarContainer = styled.nav`
     overflow-y: hidden;
     height: 64px;
     font-size: 0.75rem;
+
+    @media only screen and (max-width: 500px) {
+        height: 117px;
+    }
 `
 // Left navbar
 const LeftContainer = styled.div`
@@ -62,6 +66,10 @@ const LeftNav = styled.div`
     text-transform: uppercase;
     white-space: nowrap;
     margin-left: 30px;
+
+    @media only screen and (max-width: 500px) {
+        margin-left: 0;
+    }
 `
 
 const NavContent = styled.ul`
@@ -72,9 +80,10 @@ const NavContent = styled.ul`
     list-style: none;
     transition: all 1s cubic-bezier(.19,1,.22,1);
     margin-bottom: 0;
-
+    
     @media only screen and (max-width: 500px) {
-        margin-left: 15vw;
+        transform: translateX(-50%);
+        left: 50%;
     }
 `
 
@@ -130,7 +139,7 @@ const RightContainer = styled.div`
     align-items: center;
     padding: 0 10px;
     height: 64px;
-
+    
     @media only screen and (max-width: 500px) {
         display: none;
     }
@@ -140,6 +149,10 @@ const RightNav = styled.div`
     flex-shrink: 0;
     display: flex;
     align-items: center;
+
+    @media only screen and (max-width: 500px) {
+        display: none;
+    }
 `
 
 const SocialIcons = styled.a`
@@ -211,6 +224,9 @@ const Navbar = () => {
                                                     color: isCurrent ?  
                                                         `${theme.homeLink}` 
                                                         : '',
+                                                    boxShadow: isCurrent ?
+                                                        `0px 2px rgba(44, 175, 218, .3)`
+                                                        : '',
                                                 }
                                             }
                                         }}
@@ -226,6 +242,9 @@ const Navbar = () => {
                                                 style: {
                                                     color: isCurrent ?  
                                                         `${theme.blogLink}` 
+                                                        : '',
+                                                    boxShadow: isCurrent ?
+                                                        `0px 2px rgba(246, 82, 134, .3)`
                                                         : '',
                                                 }
                                             }
@@ -243,6 +262,9 @@ const Navbar = () => {
                                                     color: isCurrent ?  
                                                         `${theme.aboutLink}` 
                                                         : '',
+                                                    boxShadow: isCurrent ?
+                                                    `0px 2px rgba(25, 169, 115, .3)`
+                                                    : '',
                                                 }
                                             }
                                         }}
@@ -258,6 +280,9 @@ const Navbar = () => {
                                                 style: {
                                                     color: isCurrent ?  
                                                         `${theme.tagsLink}` 
+                                                        : '',
+                                                    boxShadow: isCurrent ?
+                                                        `0px 2px rgba(255, 152, 43, .3)`
                                                         : '',
                                                 }
                                             }

@@ -16,7 +16,7 @@ import SEO from "../components/seo"
 // import { rhythm } from "../utils/typography"
 
 const theme = {
-  blogLink: '#19A974',
+  blogLink: '#F65286',
   link: '#333',
 }
 
@@ -158,7 +158,6 @@ class Blog extends React.Component {
 }
 
 export default Blog
-
 
 export const pageQuery = graphql`
   query {

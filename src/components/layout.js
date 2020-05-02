@@ -1,7 +1,9 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Navbar from './navbar'
+import Footer from './footer'
+
 import styled from "styled-components"
 
 import { rhythm, scale } from "../utils/typography"
@@ -13,6 +15,7 @@ class Layout extends React.Component {
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const aboutPath = `${__PATH_PREFIX__}/about/`
     const tagsPath = `${__PATH_PREFIX__}/tags/`
+    
     let header
 
     if (location.pathname === rootPath || 
@@ -67,20 +70,16 @@ class Layout extends React.Component {
           <main>{children}</main>
         </LayoutContainer>
         <HrContainer/>
-        <Footer>
-          © {new Date().getFullYear()}, Created by
-          {` `}
-          <LinkContainer href="/">tinashe88</LinkContainer>
-        </Footer>
+        <Footer />
       </Wrapper>
     )
   }
 }
 
 const LayoutContainer = styled.div`
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 `
 
 const TitleContainer = styled.h1`
@@ -98,15 +97,6 @@ const TitleContainer = styled.h1`
 const Wrapper = styled.div`
   min-height: 100vh;
   text-decoration: none;
-`
-
-const Footer = styled.footer`
-  text-align: center;
-  margin: 24px;
-`
-
-const LinkContainer = styled.a`
-  box-shadow: none;
 `
 
 const HrContainer = styled.hr`

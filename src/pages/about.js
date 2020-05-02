@@ -43,7 +43,7 @@ class AboutPage extends React.Component {
 
 const theme = {
     link: '#333',
-    aboutTheme: '#F65286',
+    aboutTheme: '#19A974',
 }
 
 const Container = styled.div`
