@@ -9,9 +9,11 @@ import Badge from '../components/badge'
 import SocialShare from '../components/share-social'
 import Comments from '../components/comments'
 
-import styled from 'styled-components'
+import { scale } from "../utils/typography"
 
-import { rhythm, scale } from "../utils/typography"
+import Img from 'gatsby-image'
+
+import styled from 'styled-components'
 
 const TagsContainer = styled.div`
   display: flex;
@@ -48,6 +50,18 @@ const HrContainer = styled.hr`
   margin-bottom: 1.75rem;
 `
 
+const PostImage = styled(Img)`
+    position: relative;
+    margin: 10px 0 40px 0;
+
+    @media only screen and (max-width: 800px) {
+      
+    }
+`
+
+const ImageContainer = styled.div`
+    
+`
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx
@@ -80,6 +94,11 @@ class BlogPostTemplate extends React.Component {
             })}
           </TagsContainer>
         </PostMetadata>
+        <ImageContainer>
+          <PostImage
+            fluid={post.frontmatter.image.childImageSharp.fluid}
+          />
+        </ImageContainer>
         <MDXRenderer>{post.body}</MDXRenderer>
         <HrContainer />
         <Bio />
@@ -118,13 +137,20 @@ export const pageQuery = graphql`
     }
     mdx(fields: { slug: { eq: $slug } }) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 100)
       body
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
         description
         tags
+        image {
+          childImageSharp {
+            fluid(maxWidth: 500, maxHeight: 500){
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
     tagsGroup: allMdx(limit: 2000) {

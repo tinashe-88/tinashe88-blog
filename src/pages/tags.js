@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import PropTypes from "prop-types"
 
 import SEO from "../components/seo"
@@ -49,7 +49,7 @@ const LinkConatiner = styled(Link)`
     color: ${props => props.theme.tagsTheme};
   }
 `
-class TagsPage extends React.Component {
+class TagsPage extends Component {
 
     render(){
         const { data } = this.props

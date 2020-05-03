@@ -24,16 +24,11 @@ class Layout extends React.Component {
       location.pathname === tagsPath) {
       header = (
         <TitleContainer>
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
+          <LinkContainer
             to={location.pathname === blogPath ? `/blog/` : `/`}
           >
             {title}
-          </Link>
+          </LinkContainer>
         </TitleContainer>
       )
     } else {
@@ -44,16 +39,11 @@ class Layout extends React.Component {
             marginTop: 0,
           }}
         >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-            }}
+          <LinkContainer
             to={`/blog/`}
           >
             {title}
-          </Link>
+          </LinkContainer>
         </h3>
       )
     }
@@ -106,6 +96,12 @@ const HrContainer = styled.hr`
   border: 0;
   height: 1px;
   background: #f1f1f1; 
+`
+
+const LinkContainer = styled(Link)`
+  box-shadow: none;
+  text-decoration: none;
+  color: inherit;
 `
 
 export default Layout

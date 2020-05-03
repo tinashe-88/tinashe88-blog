@@ -3,8 +3,6 @@ import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 import styled from "styled-components"
 
-import { rhythm } from "../utils/typography"
-
 function Bio() {
   return (
     <StaticQuery
@@ -16,9 +14,6 @@ function Bio() {
             <ImageContainer
               fixed={data.avatar.childImageSharp.fixed}
               alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-              }}
               imgStyle={{
                 borderRadius: `50%`,
               }}
@@ -70,10 +65,10 @@ const ImageContainer = styled(Image)`
   margin-bottom: 0px;
   border-radius: 100%;
   min-width: 50px;
+  margin-right: 0.875rem;
 
   @media only screen and (max-width: 800px) {
-    margin: 0 auto;
-    margin-right: 0;
+    margin: auto;
   }
 `
 const ParagraphContainer = styled.p`

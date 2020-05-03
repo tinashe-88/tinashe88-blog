@@ -1,11 +1,10 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Button from "../components/button"
 import styled, { ThemeProvider } from 'styled-components'
-
 
 class AboutPage extends React.Component {
     render(){
@@ -20,15 +19,19 @@ class AboutPage extends React.Component {
                             About
                         </TitleContainer>
                         <ParagraphContainer>
-                        Welcome to my blog site. I'm quite excited to have this tool
-                        in order to further my understanding of how certain things work.
+                        Welcome to my blog site. I'm quite excited to 
+                        have this tool
+                        in order to further my understanding of how certain 
+                        things work.
                         </ParagraphContainer>
                         <ParagraphContainer>
                         This will be my platform to share, with you, my interests
-                        and learning experiences ranging from web development, travel, 
-                        gaming and sports.
+                        and learning experiences ranging from web development,
+                        travel, gaming and sports.
                         </ParagraphContainer>
-                        <ParagraphContainer>Thanks for being here!</ParagraphContainer>
+                        <ParagraphContainer>
+                          Thanks for being here!
+                        </ParagraphContainer>
                         <ButtonContainer>
                             <LinkContainer to="/blog/">
                                 <Button marginTop="35px">The Blog</Button>
@@ -70,7 +73,7 @@ const ParagraphContainer = styled.p`
 `
 
 export const pageQuery = graphql`
-  query {
+  query AboutQuery{
     site {
       siteMetadata {
         title

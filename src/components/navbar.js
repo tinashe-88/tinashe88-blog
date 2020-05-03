@@ -40,10 +40,6 @@ const NavbarContainer = styled.nav`
     overflow-y: hidden;
     height: 64px;
     font-size: 0.75rem;
-
-    @media only screen and (max-width: 500px) {
-        height: 117px;
-    }
 `
 // Left navbar
 const LeftContainer = styled.div`
@@ -84,6 +80,7 @@ const NavContent = styled.ul`
     @media only screen and (max-width: 500px) {
         transform: translateX(-50%);
         left: 50%;
+        margin-left: 0;
     }
 `
 
