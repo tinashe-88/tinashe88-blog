@@ -26,7 +26,6 @@ const LinkContainer = styled.span`
 
 const ButtonContainer = styled.button`
   margin: 20px;
-  /* display: none; */
   &:focus {
     outline: none;
   }

@@ -29,8 +29,8 @@ const transitionLinks = css`
 
 const Container = styled.div`
     width: 100%;
-    border-bottom: 1px solid #F4F4F4;
-    box-shadow: 0px 2px 5px -2px rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(240,240,240,.1);
+    box-shadow: 0px 2px 5px -2px rgba(0,0,0,.5);
     background: #eee;
 `
 
