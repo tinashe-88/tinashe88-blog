@@ -2,12 +2,15 @@ import React from 'react'
 
 import { Link, graphql, useStaticQuery } from 'gatsby'
 
+import MenuExitButton from './menu-exit-button'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { 
     faGithub,
     faInstagram,
     faTwitter,
  } from '@fortawesome/free-brands-svg-icons'
+ 
 
 import styled, { css, ThemeProvider } from 'styled-components'
 
@@ -27,49 +30,55 @@ const SideDrawer = props => {
     }
   `)
   const socialHandle = data.site.siteMetadata.social
-  console.log(data)
   let drawerClasses = 'side-drawer'
 
   if(props.show){
     drawerClasses = 'side-drawer open'
   }
+
   return (
     <ThemeProvider theme={theme}>
       <NavContainer className={drawerClasses}>
-        <ListContainer>
-          <ListItems>
-            <LinkContainer 
-              to="/"
-            >
-              Home
-            </LinkContainer>
-          </ListItems>
-          <HrContainer/>
-          <ListItems>
-            <LinkContainer 
-              to="/blog/"
-            >
-              Blog
-            </LinkContainer>
-          </ListItems>
-          <HrContainer/>
-          <ListItems>
-            <LinkContainer 
-              to="/about/"
-            >
-              About
-            </LinkContainer>
-          </ListItems>
-          <HrContainer/>
-          <ListItems>
-            <LinkContainer 
-              to="/tags/"
-            >
-              Tags
-            </LinkContainer>
-          </ListItems>
-          <HrContainer/>
-        </ListContainer>
+        <ButtonContainer>
+          <MenuExitButton onClick={props.click}/>
+        </ButtonContainer>
+        {/* Put logo here */}
+        <NavigationContent>
+          <ListContainer>
+            <ListItems>
+              <LinkContainer 
+                to="/"
+              >
+                Home
+              </LinkContainer>
+            </ListItems>
+            <HrContainer/>
+            <ListItems>
+              <LinkContainer 
+                to="/blog/"
+              >
+                Blog
+              </LinkContainer>
+            </ListItems>
+            <HrContainer/>
+            <ListItems>
+              <LinkContainer 
+                to="/about/"
+              >
+                About
+              </LinkContainer>
+            </ListItems>
+            <HrContainer/>
+            <ListItems>
+              <LinkContainer 
+                to="/tags/"
+              >
+                Tags
+              </LinkContainer>
+            </ListItems>
+            <HrContainer/>
+          </ListContainer>
+        </NavigationContent>
         <SocialContainer>
           <SocialIconsMobile>
             <SocialIcons
@@ -132,16 +141,28 @@ const theme = {
   instagram: '#e1306c',
   github: '#6e5494',
   link: '#333',
+  navbar: '#eee',
+  hoverBg: '#f4f4f4'
 }
 
 const transitionLinks = css`
   transition: box-shadow .37s ease-in;
   transition: color .15s ease-out;
 `
+const NavigationContent = styled.div`
+  
+`
+
+const ButtonContainer = styled.div`
+  margin-bottom: 10px;
+  padding: 7px;
+  display: flex;
+  justify-content: flex-end;
+`
 
 const NavContainer = styled.nav`
   height: 100%;
-  background: #fff;
+  background: ${props => props.theme.navbar};
   box-shadow: 1px 0 2px rgba(0, 0, 0, .5);
   position: fixed;
   padding-top: 10px;
@@ -151,7 +172,7 @@ const NavContainer = styled.nav`
   max-width: 400px;
   z-index: 200;
   transform: translateX(-103%);
-  transition: transform .25s ease-in;
+  transition: transform .45s ease-in-out;
 
   &.open {
     transform: translateX(0);
@@ -161,16 +182,21 @@ const NavContainer = styled.nav`
 // Link Container
 const ListContainer = styled.ul`
   height: 100%;
-  margin-top: 30px;
   list-style: none;
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin-left: 0;
 `
 
 const ListItems = styled.li`
-  margin: .5rem 0;
+  margin: 0;
   font-size: .7rem;
-
+  height: 50px;
+  transition: background .35s ease-in;
+  &:focus, &:active {
+    background: ${props => props.theme.hoverBg};
+  }
 `
 
 const LinkContainer = styled(Link)`
@@ -183,7 +209,6 @@ const LinkContainer = styled(Link)`
 `
 
 const HrContainer = styled.hr`
-  margin-top: 10px;
   border: 0;
   height: 0;
   border-top: 1px solid rgba(238,238,238,0.9);
@@ -195,10 +220,8 @@ const SocialButton = styled.span`
 `
 
 const SocialIcons = styled.a`
-  @media only screen and (max-width: 500px) {
-    
-    box-shadow: none;
-  }
+  margin: 0px 25px 0 -10px;
+  box-shadow: none;
 `
 
 const GithubButton = styled(SocialButton)`

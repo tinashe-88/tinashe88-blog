@@ -23,7 +23,7 @@ class Layout extends React.Component {
     })
   }
 
-  backdropClickHandler = () => {
+  exitClickHandler = () => {
     this.setState({sideDrawOpen: false})
   }
 
@@ -68,8 +68,11 @@ class Layout extends React.Component {
     return (
       <Wrapper style={{height: '100%'}}>
         <Navbar clickHandler={this.menuButtonToggle}/>
-        <SideDrawer show={this.state.sideDrawOpen}/>
-        {sideDrawOpen && <BackDrop click={this.backdropClickHandler}/>}
+        <SideDrawer 
+          show={this.state.sideDrawOpen} 
+          click={this.exitClickHandler}
+        />
+        {sideDrawOpen && <BackDrop click={this.exitClickHandler}/>}
         <LayoutContainer
           style={{
             maxWidth: rhythm(24),

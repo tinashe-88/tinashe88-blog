@@ -9,11 +9,11 @@ const MenuButton = props => {
   return (
     <ButtonContainer onClick={props.click}>
       <LinkContainer>
-          <FontAwesomeIcon
-              icon={faBars}
-              aria-hidden="true"
-              size="2x"
-          />
+        <FontAwesomeIcon
+          icon={faBars}
+          aria-hidden="true"
+          size="2x"
+        />
       </LinkContainer>
     </ButtonContainer>
   )

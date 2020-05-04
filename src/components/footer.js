@@ -20,11 +20,13 @@ const Footer = () => {
     }
   `)
 
+  const siteUrl = data.site.siteMetadata.siteUrl
+
   return (
     <FooterText>
       © {new Date().getFullYear()}, Created by
       {` `}
-      <LinkContainer href="/">tinashe88</LinkContainer>
+      <LinkContainer href={siteUrl}>tinashe88</LinkContainer>
     </FooterText>
   )
 }
