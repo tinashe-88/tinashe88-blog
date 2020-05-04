@@ -53,10 +53,6 @@ const HrContainer = styled.hr`
 const PostImage = styled(Img)`
     position: relative;
     margin: 10px 0 40px 0;
-
-    @media only screen and (max-width: 800px) {
-      
-    }
 `
 
 const ImageContainer = styled.div`

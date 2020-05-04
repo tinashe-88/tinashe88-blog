@@ -35,6 +35,10 @@ const BlogPostLink = styled(LinkContainer)`
 const ListContainer = styled.ul`
   list-style: none;
   padding: 0;
+
+  @media only screen and (max-width: 500px) {
+    margin-left: 0;
+  }
 `
 
 const ListItems = styled.li`

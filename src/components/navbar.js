@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link, useStaticQuery, graphql } from 'gatsby'
 
+import MenuButton from './menu-button'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { 
     faGithub,
@@ -29,7 +31,7 @@ const Container = styled.div`
     width: 100%;
     border-bottom: 1px solid #F4F4F4;
     box-shadow: 0px 2px 5px -2px rgba(0,0,0,.1);
-    background: #FFFCEB;
+    background: #eee;
 `
 
 const NavbarContainer = styled.nav`
@@ -78,9 +80,10 @@ const NavContent = styled.ul`
     margin-bottom: 0;
     
     @media only screen and (max-width: 500px) {
-        transform: translateX(-50%);
+        /* transform: translateX(-50%);
         left: 50%;
-        margin-left: 0;
+        margin-left: 0; */
+        display: none;
     }
 `
 
@@ -188,7 +191,7 @@ const InstagramButton = styled(SocialButton)`
     }
 `
 
-const Navbar = () => {
+const Navbar = ({...props}) => {
     const data = useStaticQuery(graphql`
         query {
             site {
@@ -206,143 +209,144 @@ const Navbar = () => {
     const socialHandle = data.site.siteMetadata.social
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container>
-                <NavbarContainer>
-                    <LeftContainer>
-                        <LeftNav>
-                            <NavContent>
-                                <NavItems>
-                                    <HomeLink 
-                                        to="/"
-                                        getProps={({ isCurrent }) => {
-                                            return {
-                                                style: {
-                                                    color: isCurrent ?  
-                                                        `${theme.homeLink}` 
-                                                        : '',
-                                                    boxShadow: isCurrent ?
-                                                        `0px 2px rgba(44, 175, 218, .3)`
-                                                        : '',
-                                                }
-                                            }
-                                        }}
-                                    >
-                                        Home
-                                    </HomeLink>
-                                </NavItems>
-                                <NavItems>
-                                    <BlogLink 
-                                        to="/blog/"
-                                        getProps={({ isCurrent }) => {
-                                            return {
-                                                style: {
-                                                    color: isCurrent ?  
-                                                        `${theme.blogLink}` 
-                                                        : '',
-                                                    boxShadow: isCurrent ?
-                                                        `0px 2px rgba(246, 82, 134, .3)`
-                                                        : '',
-                                                }
-                                            }
-                                        }}
-                                    >
-                                        Blog
-                                    </BlogLink>
-                                </NavItems>
-                                <NavItems>
-                                    <AboutLink 
-                                        to="/about/"
-                                        getProps={({ isCurrent }) => {
-                                            return {
-                                                style: {
-                                                    color: isCurrent ?  
-                                                        `${theme.aboutLink}` 
-                                                        : '',
-                                                    boxShadow: isCurrent ?
-                                                    `0px 2px rgba(25, 169, 115, .3)`
-                                                    : '',
-                                                }
-                                            }
-                                        }}
-                                    >
-                                        About
-                                    </AboutLink>
-                                </NavItems>
-                                <NavItems>
-                                    <TagsLink 
-                                        to={`/tags/`}
-                                        getProps={({ isCurrent }) => {
-                                            return {
-                                                style: {
-                                                    color: isCurrent ?  
-                                                        `${theme.tagsLink}` 
-                                                        : '',
-                                                    boxShadow: isCurrent ?
-                                                        `0px 2px rgba(255, 152, 43, .3)`
-                                                        : '',
-                                                }
-                                            }
-                                        }}
-                                    >
-                                        Tags
-                                    </TagsLink>
-                                </NavItems>
-                            </NavContent>
-                        </LeftNav>
-                    </LeftContainer>
-                    <RightContainer>
-                        <RightNav>
-                            <SocialIcons
-                                href={
-                                    "https://github.com/" + socialHandle.github
-                                }
-                                target="__blank"
-                                rel="noopener noreferrer"
-                            >
-                                <GithubButton>
-                                    <FontAwesomeIcon 
-                                        icon={faGithub}
-                                        aria-hidden="true"
-                                        size="2x"
-                                    />
-                                </GithubButton>
-                            </SocialIcons>
-                            <SocialIcons
-                                href={
-                                    "https://twitter.com/" + socialHandle.twitter
-                                }
-                                target="__blank"
-                                rel="noopener noreferrer"
-                            >
-                                <TwitterButton>
-                                    <FontAwesomeIcon 
-                                        icon={faTwitter}
-                                        aria-hidden="true"
-                                        size="2x"
-                                    />
-                                </TwitterButton>
-                            </SocialIcons>
-                            <SocialIcons
-                                href={
-                                    "https://instagram.com/" + socialHandle.instagram
-                                }
-                                target="__blank"
-                                rel="noopener noreferrer"
-                            >
-                                <InstagramButton>
-                                    <FontAwesomeIcon 
-                                        icon={faInstagram}
-                                        aria-hidden="true"
-                                        size="2x"
-                                    />
-                                </InstagramButton>
-                            </SocialIcons>
-                        </RightNav>
-                    </RightContainer>
-                </NavbarContainer>
-            </Container>
-        </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <Container>
+          <NavbarContainer>
+            <MenuButton click={props.clickHandler}/>
+            <LeftContainer>
+              <LeftNav>
+                <NavContent>
+                  <NavItems>
+                    <HomeLink 
+                      to="/"
+                      getProps={({ isCurrent }) => {
+                        return {
+                          style: {
+                            color: isCurrent ?  
+                              `${theme.homeLink}` 
+                              : '',
+                            boxShadow: isCurrent ?
+                              `0px 2px rgba(44, 175, 218, .3)`
+                              : '',
+                          }
+                        }
+                      }}
+                    >
+                        Home
+                    </HomeLink>
+                  </NavItems>
+                  <NavItems>
+                    <BlogLink 
+                      to="/blog/"
+                      getProps={({ isCurrent }) => {
+                        return {
+                          style: {
+                            color: isCurrent ?  
+                              `${theme.blogLink}` 
+                              : '',
+                            boxShadow: isCurrent ?
+                              `0px 2px rgba(246, 82, 134, .3)`
+                              : '',
+                          }
+                        }
+                      }}
+                    >
+                        Blog
+                    </BlogLink>
+                  </NavItems>
+                  <NavItems>
+                    <AboutLink 
+                      to="/about/"
+                      getProps={({ isCurrent }) => {
+                        return {
+                          style: {
+                            color: isCurrent ?  
+                              `${theme.aboutLink}` 
+                              : '',
+                            boxShadow: isCurrent ?
+                              `0px 2px rgba(25, 169, 115, .3)`
+                              : '',
+                          }
+                        }
+                      }}
+                    >
+                        About
+                    </AboutLink>
+                  </NavItems>
+                  <NavItems>
+                    <TagsLink 
+                      to={`/tags/`}
+                      getProps={({ isCurrent }) => {
+                        return {
+                          style: {
+                            color: isCurrent ?  
+                              `${theme.tagsLink}` 
+                              : '',
+                            boxShadow: isCurrent ?
+                              `0px 2px rgba(255, 152, 43, .3)`
+                              : '',
+                          }
+                        }
+                      }}
+                    >
+                        Tags
+                    </TagsLink>
+                  </NavItems>
+                </NavContent>
+              </LeftNav>
+            </LeftContainer>
+            <RightContainer>
+              <RightNav>
+                <SocialIcons
+                  href={
+                    "https://github.com/" + socialHandle.github
+                  }
+                  target="__blank"
+                  rel="noopener noreferrer"
+                >
+                  <GithubButton>
+                    <FontAwesomeIcon 
+                      icon={faGithub}
+                      aria-hidden="true"
+                      size="2x"
+                    />
+                  </GithubButton>
+                </SocialIcons>
+                <SocialIcons
+                  href={
+                    "https://twitter.com/" + socialHandle.twitter
+                  }
+                  target="__blank"
+                  rel="noopener noreferrer"
+                >
+                  <TwitterButton>
+                    <FontAwesomeIcon 
+                      icon={faTwitter}
+                      aria-hidden="true"
+                      size="2x"
+                    />
+                  </TwitterButton>
+                </SocialIcons>
+                <SocialIcons
+                  href={
+                    "https://instagram.com/" + socialHandle.instagram
+                  }
+                  target="__blank"
+                  rel="noopener noreferrer"
+                >
+                  <InstagramButton>
+                    <FontAwesomeIcon 
+                      icon={faInstagram}
+                      aria-hidden="true"
+                      size="2x"
+                    />
+                  </InstagramButton>
+                </SocialIcons>
+              </RightNav>
+            </RightContainer>
+          </NavbarContainer>
+        </Container>
+      </ThemeProvider>
     )
 }
 

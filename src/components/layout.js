@@ -1,21 +1,39 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { Link } from "gatsby"
 
 import Navbar from './navbar'
 import Footer from './footer'
+import SideDrawer from './side-drawer'
+import BackDrop from './backdrop'
 
 import styled from "styled-components"
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm } from "../utils/typography"
 
 class Layout extends React.Component {
+  state = {
+    sideDrawOpen: false,
+  }
+
+  menuButtonToggle = () => {
+    this.setState((prevState) => {
+      return {
+        sideDrawOpen: !prevState.sideDrawOpen
+      }
+    })
+  }
+
+  backdropClickHandler = () => {
+    this.setState({sideDrawOpen: false})
+  }
+
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     const blogPath = `${__PATH_PREFIX__}/blog/`
     const aboutPath = `${__PATH_PREFIX__}/about/`
     const tagsPath = `${__PATH_PREFIX__}/tags/`
-    
+    let { sideDrawOpen } = this.state
     let header
 
     if (location.pathname === rootPath || 
@@ -48,8 +66,10 @@ class Layout extends React.Component {
       )
     }
     return (
-      <Wrapper>
-        <Navbar />
+      <Wrapper style={{height: '100%'}}>
+        <Navbar clickHandler={this.menuButtonToggle}/>
+        <SideDrawer show={this.state.sideDrawOpen}/>
+        {sideDrawOpen && <BackDrop click={this.backdropClickHandler}/>}
         <LayoutContainer
           style={{
             maxWidth: rhythm(24),
