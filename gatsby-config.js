@@ -86,7 +86,7 @@ module.exports = {
         theme_color: `#111`,
         display: `minimal-ui`,
         // edit below
-        icon: `content/assets/blog-logo.png`,
+        icon: `content/assets/88-logo.png`,
       },
     },
     {

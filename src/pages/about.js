@@ -19,18 +19,25 @@ class AboutPage extends React.Component {
                             About
                         </TitleContainer>
                         <ParagraphContainer>
-                        Welcome to my blog site. I'm quite excited to 
-                        have this tool
-                        in order to further my understanding of how certain 
-                        things work.
+                          My name's Tinashe and I'm from Harare, Zimbabwe but I
+                          grew up inbetween Johannesburg and Cape Town, South
+                          attempting to figure out what makes the web go round.
+                          Considered to be a creative and someone who has a 
+                          natural talent for understanding how certain things 
+                          work.
                         </ParagraphContainer>
                         <ParagraphContainer>
-                        This will be my platform to share, with you, my interests
-                        and learning experiences ranging from web development,
-                        travel, gaming and sports.
+                          In my spare time I like to play as much sports as
+                          I possibly can. My preferred sport are Football
+                          (European), Athletics, Rugby, Hockey and others.
+                          Watcthing live games is also something I do.
                         </ParagraphContainer>
                         <ParagraphContainer>
-                          Thanks for being here!
+                          Music makes my life just that much better. I love
+                          it so much that I create it whenever I find the time.
+                          I am, however a qualified sound engineer so there's 
+                          that too. Anything to do with sound and I'm a happy
+                          human.
                         </ParagraphContainer>
                         <ButtonContainer>
                             <LinkContainer to="/blog/">

@@ -18,11 +18,13 @@ class IndexPage extends React.Component {
             title="Home"
             keywords={[`blog`, `javascript`, `react`, `node`, `tinashe88`]}
           />
-          <img 
-            style={{ margin: 0, width: "500px", height: "500px" }} 
-            src="./logo-image.svg" 
-            alt="blog logo" 
-          />
+          <ImageContainer>
+            <img 
+              style={{ margin: 0, width: "500px", height: "500px" }} 
+              src="./blog-logo.svg" 
+              alt="blog logo" 
+            />
+          </ImageContainer>
           <TitleContainer>
             Hey people{" "}
             <span role="img" aria-label="wave emoji">
@@ -41,7 +43,7 @@ class IndexPage extends React.Component {
           <p>Thanks for being here!</p>
           <ButtonContainer>
             <LinkContainer to="/blog/">
-              <Button marginTop="35px">The Blog</Button>
+              <ButtonStyles>The Blog</ButtonStyles>
             </LinkContainer>
           </ButtonContainer>
         </Layout>
@@ -68,6 +70,15 @@ const ButtonContainer = styled.div`
 const LinkContainer = styled(Link)`
   box-shadow: none;
   text-decoration: none;
+`
+
+const ImageContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`
+const ButtonStyles = styled(Button)`
+  margin-top: 35px;
+  color: ${props => props.theme.homeLink};
 `
 
 export default IndexPage
