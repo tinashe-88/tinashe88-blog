@@ -82,7 +82,9 @@ class BlogPostTemplate extends React.Component {
             {post.frontmatter.tags.map(tag => {
               return (
                 <Badge key={tag}>
-                  <LinkContainer to={`tags/${tag}`}>
+                  <LinkContainer 
+                    to={`tags/${tag}/`}
+                  >
                     <span>{tag}</span>
                   </LinkContainer>
                 </Badge>

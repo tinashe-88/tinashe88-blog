@@ -1,4 +1,4 @@
-import React, { Component } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 
 import SEO from "../components/seo"
@@ -49,40 +49,39 @@ const LinkConatiner = styled(Link)`
     color: ${props => props.theme.tagsTheme};
   }
 `
-class TagsPage extends Component {
+class TagsPage extends React.Component {
 
-    render(){
-        const { data } = this.props
-        const siteTitle = data.site.siteMetadata.title
-        const tags = data.allMdx.group
+  render(){
+    const { data } = this.props
+    const siteTitle = data.site.siteMetadata.title
+    const tags = data.allMdx.group
 
-        return (
-          <ThemeProvider theme={theme}>
-
-            <Layout location={this.props.location} title={siteTitle}>
-              <SEO title="tags"/>
-              <TagsContainer>
-                <TitleContainer>Tags</TitleContainer>
-                <ListContainer>
-                  {tags.map(tag => (
-                    <ItemsContainer key={tag.fieldValue}>
-                      <Badge
-                        style={{width: rhythm(3)}}
-                      >
-                        <LinkConatiner 
-                          to={`/tags/${kebabCase(tag.fieldValue)}/`}
-                        >
-                          {tag.fieldValue} ({tag.totalCount})
-                        </LinkConatiner>
-                      </Badge>
-                    </ItemsContainer>
-                  ))}
-                </ListContainer>
-              </TagsContainer>
-            </Layout>
-          </ThemeProvider>
-          )
-    }
+    return (
+      <ThemeProvider theme={theme}>
+        <Layout location={this.props.location} title={siteTitle}>
+          <SEO title="tags"/>
+          <TagsContainer>
+            <TitleContainer>Tags</TitleContainer>
+            <ListContainer>
+              {tags.map(tag => (
+                <ItemsContainer key={tag.fieldValue}>
+                  <Badge
+                    style={{width: rhythm(3)}}
+                  >
+                    <LinkConatiner 
+                      to={`/tags/${kebabCase(tag.fieldValue)}/`}
+                    >
+                      {tag.fieldValue} ({tag.totalCount})
+                    </LinkConatiner>
+                  </Badge>
+                </ItemsContainer>
+              ))}
+            </ListContainer>
+          </TagsContainer>
+        </Layout>
+      </ThemeProvider>
+    )
+  }
 }
 
 TagsPage.propTypes = {

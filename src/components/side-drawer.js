@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { Link, graphql, useStaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 
 import MenuExitButton from './menu-exit-button'
 
@@ -18,18 +19,27 @@ const SideDrawer = props => {
   const data = useStaticQuery(graphql`
     query {
       site {
-          siteMetadata {
-            siteUrl
-            social {
-              twitter
-              instagram
-              github
-            }
+        siteMetadata {
+          siteUrl
+          social {
+            twitter
+            instagram
+            github
           }
+        }
+      }
+      file(relativePath: {eq: "88-logo.png"}) {
+        childImageSharp {
+          fixed(width: 60, height: 47) {
+          ...GatsbyImageSharpFixed
+          }
+        }
       }
     }
   `)
-  const socialHandle = data.site.siteMetadata.social
+  const siteMeta = data.site.siteMetadata
+  const socialHandle = siteMeta.social
+
   let drawerClasses = 'side-drawer'
 
   if(props.show){
@@ -42,6 +52,15 @@ const SideDrawer = props => {
         <ButtonContainer>
           <MenuExitButton onClick={props.click}/>
         </ButtonContainer>
+        <ImageContainer>
+          <Img 
+            fixed={data.file.childImageSharp.fixed}
+            alt={"blog logo"}
+            imgStyle={{
+              display: `flex`,
+            }}
+          />
+        </ImageContainer>
         {/* Put logo here */}
         <NavigationContent>
           <ListContainer>
@@ -149,6 +168,14 @@ const transitionLinks = css`
   transition: box-shadow .37s ease-in;
   transition: color .15s ease-out;
 `
+
+const ImageContainer = styled.div`
+  height: 60px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+`
+
 const NavigationContent = styled.div`
   
 `
@@ -246,15 +273,15 @@ const InstagramButton = styled(SocialButton)`
 `
 
 const SocialContainer = styled.div`
-  position: absolute;
-  top: 80%;
-  left: 33%;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 `
 
 const SocialIconsMobile = styled.div`
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
+  position: absolute;
+  left: 50%;
+  margin-left: -50px;
 `
 
 export default SideDrawer

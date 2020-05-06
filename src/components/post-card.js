@@ -13,7 +13,6 @@ const transitionLinks = css`
 `
 
 const CardBodyContainer = styled.div`
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   border-radius: 5px;
   margin: 1rem auto;
   max-height: 250px;
@@ -22,11 +21,14 @@ const CardBodyContainer = styled.div`
   justify-content: space-between;
 
   &:hover {
-    
-    box-shadow: 0 4px 5px rgba(0,0,0,0.2);
     transition: ${transitionLinks};
     border-left: 5px solid ${theme.blogLink};
   }
+`
+
+const HrContainer = styled.hr`
+  color: #f4f4f4;
+  margin: 10px 0 10px;
 `
 
 const PostCard = ({children, ...props}) => (
@@ -34,6 +36,7 @@ const PostCard = ({children, ...props}) => (
     <CardBodyContainer {...props}>
         {children}
     </CardBodyContainer>
+    <HrContainer/>
   </ThemeProvider>
 )
 
