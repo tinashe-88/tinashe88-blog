@@ -22,4 +22,7 @@ export const CardBodyContainer = styled.div`
 export const HrContainer = styled.hr`
   color: #f4f4f4;
   margin: 10px 0 10px;
+  &:last-of-type {
+    display: none;
+  }
 `

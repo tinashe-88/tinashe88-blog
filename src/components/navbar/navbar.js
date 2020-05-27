@@ -75,7 +75,7 @@ const Navbar = ({...props}) => {
                           style: {
                             color: isCurrent ?  
                               `${theme.homeLink}` 
-                              : '',
+                              : `${theme.link}`,
                             boxShadow: isCurrent ?
                               `0px 2px rgba(44, 175, 218, .3)`
                               : '',
@@ -89,18 +89,19 @@ const Navbar = ({...props}) => {
                   <NavItems>
                     <BlogLink 
                       to="/blog/"
-                      getProps={({ isCurrent, isPartiallyCurrent }) => {
+                      getProps={({ isPartiallyCurrent }) => {
                         return {
                           style: {
-                            color: isCurrent && isPartiallyCurrent ?  
+                            color: isPartiallyCurrent ?  
                               `${theme.blogLink}` 
-                              : '',
-                            boxShadow: isCurrent ?
+                              : `${theme.link}`,
+                            boxShadow: isPartiallyCurrent ?
                               `0px 2px rgba(246, 82, 134, .3)`
                               : '',
                           }
                         }
                       }}
+                      partiallyActive={true}
                     >
                         Blog
                     </BlogLink>
@@ -113,7 +114,7 @@ const Navbar = ({...props}) => {
                           style: {
                             color: isCurrent ?  
                               `${theme.aboutLink}` 
-                              : '',
+                              : `${theme.link}`,
                             boxShadow: isCurrent ?
                               `0px 2px rgba(25, 169, 115, .3)`
                               : '',
@@ -127,13 +128,13 @@ const Navbar = ({...props}) => {
                   <NavItems>
                     <TagsLink 
                       to={`/tags/`}
-                      getProps={({ isCurrent }) => {
+                      getProps={({ isPartiallyCurrent }) => {
                         return {
                           style: {
-                            color: isCurrent ?  
+                            color: isPartiallyCurrent ?  
                               `${theme.tagsLink}` 
-                              : '',
-                            boxShadow: isCurrent ?
+                              : `${theme.link}`,
+                            boxShadow: isPartiallyCurrent ?
                               `0px 2px rgba(255, 152, 43, .3)`
                               : '',
                           }

@@ -34,8 +34,8 @@ const NotFoundPage = ({ data, location }) => {
       <TextContainer>
         <TitleContainer>Not Found</TitleContainer>
         <ParagraphContainer>
-          {console.log(data)}
-          You just hit a route that doesn&#39;t exist... the sadness.
+          It looks like you've hit a page that doesn't
+          exist.
         </ParagraphContainer>
       </TextContainer>
       <IconContainer>

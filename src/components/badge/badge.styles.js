@@ -16,8 +16,4 @@ export const TagsContainer = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  /* @media only screen and (max-width: 800px) {
-    color: green;
-  } */
 `
