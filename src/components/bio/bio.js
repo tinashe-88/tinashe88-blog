@@ -1,7 +1,11 @@
 import React from "react"
 import { StaticQuery, graphql } from "gatsby"
-import Image from "gatsby-image"
-import styled from "styled-components"
+
+import {
+  Container,
+  ImageContainer,
+  ParagraphContainer,
+} from './bio.styles'
 
 function Bio() {
   return (
@@ -50,31 +54,6 @@ const bioQuery = graphql`
         }
       }
     }
-  }
-`
-
-const Container = styled.div`
-  display: flex;
-
-  @media only screen and (max-width: 800px) {
-    flex-direction: column;
-  }
-`
-
-const ImageContainer = styled(Image)`
-  margin-bottom: 0px;
-  border-radius: 100%;
-  min-width: 50px;
-  margin-right: 0.875rem;
-
-  @media only screen and (max-width: 800px) {
-    margin: auto;
-  }
-`
-const ParagraphContainer = styled.p`
-
-  @media only screen and (max-width: 800px) {
-    margin-top: 20px;
   }
 `
 

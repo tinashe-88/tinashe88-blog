@@ -1,19 +1,30 @@
 import React from "react"
-import { Link } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Button from "../components/button"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo/seo"
 
-import styled, { ThemeProvider } from 'styled-components'
+import {
+  TitleContainer,
+  ButtonContainer,
+  LinkContainer,
+  ImageContainer,
+  ButtonStyles
+} from '../styles/pages/home.styles'
 
-class IndexPage extends React.Component {
-  render() {
-    const siteTitle = "tinashe88 blog"
+import { ThemeProvider } from 'styled-components'
 
-    return (
-      <ThemeProvider theme={theme}>
-        <Layout location={this.props.location} title={siteTitle}>
+const theme = {
+  link: '#333',
+  homeLink: '#2CAFDA',
+}
+
+const IndexPage = ({ location }) => {
+  return (
+    <ThemeProvider theme={theme}>
+        <Layout 
+          location={location} 
+          style={{display:'none'}}
+        >
           <SEO
             title="Home"
             keywords={[`blog`, `javascript`, `react`, `node`, `tinashe88`]}
@@ -26,9 +37,9 @@ class IndexPage extends React.Component {
             />
           </ImageContainer>
           <TitleContainer>
-            Hey people{" "}
+            Holá {" "}
             <span role="img" aria-label="wave emoji">
-              👋
+              🤘
             </span>
           </TitleContainer>
           <p>
@@ -48,37 +59,7 @@ class IndexPage extends React.Component {
           </ButtonContainer>
         </Layout>
       </ThemeProvider>
-    )
-  }
+  )
 }
-
-const theme = {
-  link: '#333',
-  homeLink: '#2CAFDA',
-}
-
-const TitleContainer = styled.h1`
-  margin-top: 0.5rem;
-  color: ${props => props.theme.homeLink};
-`
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-const LinkContainer = styled(Link)`
-  box-shadow: none;
-  text-decoration: none;
-`
-
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
-const ButtonStyles = styled(Button)`
-  margin-top: 35px;
-  color: ${props => props.theme.homeLink};
-`
 
 export default IndexPage

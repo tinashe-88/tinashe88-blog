@@ -1,95 +1,35 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Badge from '../components/badge'
-import PostCard from '../components/post-card'
+import Badge from '../components/badge/badge'
+import PostCard from '../components/post-card/post-card'
 
-import styled, { ThemeProvider } from 'styled-components'
-
-import Img from 'gatsby-image'
+import { ThemeProvider } from 'styled-components'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo/seo"
+
+import {
+  CardContainer,
+  CardTextContainer,
+  CardTitleContainer,
+  ParagraphContainer,
+  IconContainer,
+  LinkContainer,
+  BlogLink,
+  TagContainer,
+  ImageContainer,
+  ImageContents
+} from '../styles/pages/blog.styles'
 // import { rhythm } from "../utils/typography"
 
 const theme = {
   blogLink: '#F65286',
   link: '#333',
 }
-
-const CardContainer = styled.div`
-  text-align: left;
-`
-
-const CardTextContainer = styled.div`
-  margin-bottom: 7px;
-  padding: 1rem;
-  min-width: 10px;
-  overflow: hidden;
-`
-
-const CardTitleContainer = styled.h3`
-  margin-top: .3rem;
-
-  @media only screen and (max-width: 800px) {
-    font-size: 1.3rem;
-    margin-bottom: 14px;
-  }
-`
-
-const ParagraphContainer = styled.p`
-  font-size : 12px;
-
-  @media only screen and (max-width: 500px) {
-    
-  }
-`
-
-const IconContainer = styled.div`
-  justify-content: center;
-  display: flex;
-  padding: 25px;
-  font-size: 25px;
-`
-
-const LinkContainer = styled(Link)`
-  box-shadow: none;
-  color: ${props => props.theme.link};
-
-  &:hover {
-    color: ${props => props.theme.blogLink};
-    transition: 0.2s ease-in;
-  }
-`
-
-const BlogLink = styled(LinkContainer)`
-  color: ${props => props.theme.link};
-
-  &:hover {
-    color: ${props => props.theme.blogLink};
-    transition: 0.2s ease-in;
-  }
-`
-
-const TagContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const ImageContainer = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: row-reverse;
-`
-
-const ImageContents = styled(Img)`
-    position: relative;
-    height: 250px;
-    width: 250px;
-`
 
 class Blog extends React.Component {
   render() {

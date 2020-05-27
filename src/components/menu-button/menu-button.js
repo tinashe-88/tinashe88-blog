@@ -3,7 +3,10 @@ import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {  faBars } from '@fortawesome/free-solid-svg-icons'
 
-import styled from 'styled-components'
+import {
+  LinkContainer,
+  ButtonContainer
+} from './menu-button.styles'
 
 const MenuButton = props => {
   return (
@@ -18,21 +21,5 @@ const MenuButton = props => {
     </ButtonContainer>
   )
 }
-
-const LinkContainer = styled.span`
-  box-shadow: none;
-  color: #333;
-`
-
-const ButtonContainer = styled.button`
-  margin: 20px;
-  &:focus {
-    outline: none;
-  }
-
-  @media only screen and (min-width: 500px) {
-    display: none;
-  }
-`
 
 export default MenuButton

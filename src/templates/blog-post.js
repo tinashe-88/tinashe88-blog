@@ -1,63 +1,28 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Bio from "../components/bio"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Badge from '../components/badge'
-import SocialShare from '../components/share-social'
-import Comments from '../components/comments'
+import Bio from "../components/bio/bio"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo/seo"
+import Badge from '../components/badge/badge'
+import SocialShare from '../components/share-social/share-social'
+import Comments from '../components/comments/comments'
 
 import { scale } from "../utils/typography"
 
-import Img from 'gatsby-image'
+import {
+  TagsContainer,
+  LinkContainer,
+  ListContainer,
+  ListItemsContainer,
+  PostTitle,
+  PostMetadata,
+  HrContainer,
+  PostImage,
+  ImageContainer
+} from '../styles/templates/blog-post.styles'
 
-import styled from 'styled-components'
-
-const TagsContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`
-
-const LinkContainer = styled(Link)`
-  box-shadow: none;
-`
-
-const ListContainer = styled.ul`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  list-style: none;
-  padding: 0;
-`
-
-const ListItemsContainer = styled.div`
-
-`
-
-const PostTitle = styled.h2`
-
-`
-
-const PostMetadata = styled.span`
-  margin-top: 1.25rem;
-  display: block;
-  margin-bottom: 1.75rem;
-`
-
-const HrContainer = styled.hr`
-  margin-bottom: 1.75rem;
-`
-
-const PostImage = styled(Img)`
-    position: relative;
-    margin: 10px 0 40px 0;
-`
-
-const ImageContainer = styled.div`
-    
-`
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.mdx

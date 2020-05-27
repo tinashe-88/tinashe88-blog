@@ -1,68 +1,50 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import Img from 'gatsby-image'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo/seo"
 
-import styled from 'styled-components'
+import {
+  ImageContainer,
+  TextContainer,
+  TitleContainer,
+  ParagraphContainer,
+  IconContainer,
+  LinkContainer
+} from '../styles/pages/404.styles'
 
-const ImageContainer = styled.div`
-  display: flex;
-  justify-content: center;
-`
+const NotFoundPage = ({ data, location }) => {
+  const image = data.file
+  const siteTitle = data.site.siteMetadata.title
 
-const TextContainer = styled.div`
-  text-align: center;
-`
-
-const TitleContainer = styled.h2`
-
-`
-
-const ParagraphContainer = styled.p`
-
-`
-
-const IconContainer = styled.div`
-  justify-content: center;
-  display: flex;
-  font-size: 25px;
-`
-
-const LinkContainer = styled(Link)`
-  box-shadow: none;
-`
-
-class NotFoundPage extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO title="404: Not Found" />
-        <ImageContainer>
-          <Img 
-            fixed={data.file.childImageSharp.fixed}
-          />
-        </ImageContainer>
-        <TextContainer>
-          <TitleContainer>Not Found</TitleContainer>
-          <ParagraphContainer>
-            You just hit a route that doesn&#39;t exist... the sadness.
-          </ParagraphContainer>
-        </TextContainer>
-        <IconContainer>
-          <LinkContainer to="/">
-            <FontAwesomeIcon icon={faHome}/>
-          </LinkContainer>
-        </IconContainer>
-      </Layout>
-    )
-  }
+  return (
+    <Layout 
+      location={location} 
+      title={siteTitle}
+    >
+      <SEO title="404: Not Found" />
+      <ImageContainer>
+        <Img 
+          fixed={image.childImageSharp.fixed}
+        />
+      </ImageContainer>
+      <TextContainer>
+        <TitleContainer>Not Found</TitleContainer>
+        <ParagraphContainer>
+          {console.log(data)}
+          You just hit a route that doesn&#39;t exist... the sadness.
+        </ParagraphContainer>
+      </TextContainer>
+      <IconContainer>
+        <LinkContainer to="/">
+          <FontAwesomeIcon icon={faHome}/>
+        </LinkContainer>
+      </IconContainer>
+    </Layout>
+  )
 }
 
 export default NotFoundPage

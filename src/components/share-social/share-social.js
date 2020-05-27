@@ -1,13 +1,24 @@
 import React from 'react'
 import { useStaticQuery, graphql } from "gatsby"
 
-import styled, { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTwitterSquare } from '@fortawesome/free-brands-svg-icons/faTwitterSquare'
 import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons/faFacebookSquare'
 import { faLinkedinIn } from '@fortawesome/free-brands-svg-icons/faLinkedinIn'
 import { faPinterestSquare } from '@fortawesome/free-brands-svg-icons/faPinterestSquare'
 
+import {
+  Container,
+  Headline,
+  HeadlineTitle,
+  SocialButtonsContainer,
+  ButtonLink,
+  LinkedinButton,
+  TwitterButton,
+  FacebookButton,
+  PinterestButton
+} from './share-social.styles'
 
 const theme = {
     linkedin: '#0072b1',
@@ -15,70 +26,6 @@ const theme = {
     facebook: '#3b5998',
     pinterest: '#e60023',
 }
-
-const Container = styled.div`
-    padding-bottom: 20px;
-    text-align: center;
-`
-
-const Headline = styled.div`
-    
-`
-
-const HeadlineTitle = styled.h3`
-    font-size: 20px;
-`
-
-const SocialButtonsContainer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    background: rgba(256,256,256,0.5);
-    text-align: center;
-`
-
-const SocialIcon = styled.span`
-    display: inline-block;
-    margin: 20px;
-    font-size: 12px;
-    width: 60px;
-
-    &:hover {
-        transition: 0.17s ease-in;
-        cursor: pointer;
-    }
-`
-
-const ButtonLink = styled.a`
-    text-decoration: none;
-    box-shadow: none;
-    color: #333;
-`
-
-const LinkedinButton = styled(SocialIcon)`
-    
-    &:hover {
-        color: ${props => props.theme.linkedin};
-    }
-`
-
-const TwitterButton = styled(SocialIcon)`
-    &:hover {
-        color: ${props => props.theme.twitter};
-    }
-`
-
-const FacebookButton = styled(SocialIcon)`
-    &:hover {
-        color: ${props => props.theme.facebook};
-    }
-`
-
-const PinterestButton = styled(SocialIcon)`
-    &:hover {
-        color: ${props => props.theme.pinterest};
-    }
-`
 
 const SocialShare = () => {
     const data  = useStaticQuery(graphql`

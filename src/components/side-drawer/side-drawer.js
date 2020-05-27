@@ -1,19 +1,44 @@
 import React from 'react'
 
-import { Link, graphql, useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 
-import MenuExitButton from './menu-exit-button'
+import MenuExitButton from '../menu-exit-button/menu-exit-button'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { 
-    faGithub,
-    faInstagram,
-    faTwitter,
- } from '@fortawesome/free-brands-svg-icons'
- 
+  faGithub,
+  faInstagram,
+  faTwitter,
+} from '@fortawesome/free-brands-svg-icons'
 
-import styled, { css, ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components'
+
+import {
+  ImageContainer,
+  NavigationContent,
+  ButtonContainer,
+  NavContainer,
+  ListContainer,
+  ListItems,
+  LinkContainer,
+  HrContainer,
+  SocialIcons,
+  GithubButton,
+  TwitterButton,
+  InstagramButton,
+  SocialContainer,
+  SocialIconsMobile,
+} from './side-drawer.styles'
+
+const theme = {
+  twitter: '#00acee',
+  instagram: '#e1306c',
+  github: '#6e5494',
+  link: '#333',
+  navbar: '#eee',
+  hoverBg: '#f4f4f4'
+}
 
 const SideDrawer = props => {
   const data = useStaticQuery(graphql`
@@ -154,134 +179,5 @@ const SideDrawer = props => {
     </ThemeProvider>
   )
 }
-
-const theme = {
-  twitter: '#00acee',
-  instagram: '#e1306c',
-  github: '#6e5494',
-  link: '#333',
-  navbar: '#eee',
-  hoverBg: '#f4f4f4'
-}
-
-const transitionLinks = css`
-  transition: box-shadow .37s ease-in;
-  transition: color .15s ease-out;
-`
-
-const ImageContainer = styled.div`
-  height: 60px;
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-`
-
-const NavigationContent = styled.div`
-  
-`
-
-const ButtonContainer = styled.div`
-  margin-bottom: 10px;
-  padding: 7px;
-  display: flex;
-  justify-content: flex-end;
-`
-
-const NavContainer = styled.nav`
-  height: 100%;
-  background: ${props => props.theme.navbar};
-  box-shadow: 1px 0 2px rgba(0, 0, 0, .5);
-  position: fixed;
-  padding-top: 10px;
-  top: 0;
-  left: 0;
-  width: 70%;
-  max-width: 400px;
-  z-index: 200;
-  transform: translateX(-103%);
-  transition: transform .45s ease-in-out;
-
-  &.open {
-    transform: translateX(0);
-  }
-`
-
-// Link Container
-const ListContainer = styled.ul`
-  height: 100%;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  margin-left: 0;
-`
-
-const ListItems = styled.li`
-  margin: 0;
-  font-size: .7rem;
-  height: 50px;
-  transition: background .35s ease-in;
-  &:focus, &:active {
-    background: ${props => props.theme.hoverBg};
-  }
-`
-
-const LinkContainer = styled(Link)`
-  box-shadow: none;
-  color: #333;
-
-  &:hover, &:active {
-    color: #fa3923;
-  } 
-`
-
-const HrContainer = styled.hr`
-  border: 0;
-  height: 0;
-  border-top: 1px solid rgba(238,238,238,0.9);
-`
-// Social Container
-const SocialButton = styled.span`
-  margin: 10px;
-  color: ${props => props.theme.link};
-`
-
-const SocialIcons = styled.a`
-  margin: 0px 25px 0 -10px;
-  box-shadow: none;
-`
-
-const GithubButton = styled(SocialButton)`
-  &:hover {
-    color: ${props => props.theme.github};
-    transition: ${transitionLinks};
-  }
-`
-
-const TwitterButton = styled(SocialButton)`
-  &:hover {
-    color: ${props => props.theme.twitter};
-    transition: ${transitionLinks};
-  }
-`
-
-const InstagramButton = styled(SocialButton)`
-  &:hover {
-    color: ${props => props.theme.instagram};
-    transition: ${transitionLinks};
-  }
-`
-
-const SocialContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-`
-
-const SocialIconsMobile = styled.div`
-  position: absolute;
-  left: 50%;
-  margin-left: -50px;
-`
 
 export default SideDrawer

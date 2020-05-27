@@ -1,54 +1,18 @@
-import React, { Component } from "react"
+import React from "react"
 import PropTypes from "prop-types"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/layout/layout"
+import SEO from "../components/seo/seo"
 
-import styled from 'styled-components'
-
-const BodyContainer = styled.div`
-  @media only screen and (max-width: 800px) {
-    text-align: center;
-  }
-`
-
-const TagHeader = styled.h2`
-  @media only screen and (max-width: 800px) {
-    font-size: 1.4rem;
-    line-height: 2rem;
-  }
-`
-
-const LinkContainer = styled(Link)`
-  box-shadow: none;
-`
-
-const BlogPostLink = styled(LinkContainer)`
-  color: #19A974;
-
-  &:hover {
-    color: #000;
-  }
-`
-
-const ListContainer = styled.ul`
-  list-style: none;
-  padding: 0;
-
-  @media only screen and (max-width: 500px) {
-    margin-left: 0;
-  }
-`
-
-const ListItems = styled.li`
-  
-`
-
-const AllTagsLink = styled(LinkContainer)`
-  display: flex;
-  justify-content: center;
-`
+import {
+  BodyContainer,
+  TagHeader,
+  BlogPostLink,
+  ListContainer,
+  ListItems,
+  AllTagsLink
+} from '../styles/templates/tags'
 
 class Tags extends React.Component {
   render(){
