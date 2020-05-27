@@ -22,7 +22,7 @@ import {
   BlogLink,
   TagContainer,
   ImageContainer,
-  ImageContents
+  ImageContents,
 } from '../styles/pages/blog.styles'
 // import { rhythm } from "../utils/typography"
 

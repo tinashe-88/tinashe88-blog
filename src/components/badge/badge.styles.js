@@ -9,10 +9,15 @@ export const BadgeContainer = styled.div`
   text-align: center;
   color: #357EDD;
   background: #f1f1f1;
+
 `
 
 export const TagsContainer = styled.span`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* @media only screen and (max-width: 800px) {
+    color: green;
+  } */
 `

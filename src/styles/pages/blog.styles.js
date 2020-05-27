@@ -26,10 +26,6 @@ export const CardTitleContainer = styled.h3`
 
 export const ParagraphContainer = styled.p`
   font-size : 12px;
-
-  @media only screen and (max-width: 500px) {
-    
-  }
 `
 
 export const IconContainer = styled.div`
@@ -47,6 +43,9 @@ export const LinkContainer = styled(Link)`
     color: ${props => props.theme.blogLink};
     transition: 0.2s ease-in;
   }
+  @media only screen and (max-width: 800px) {
+    color: ${props => props.theme.blogLink};
+  }
 `
 
 export const BlogLink = styled(LinkContainer)`
@@ -55,6 +54,10 @@ export const BlogLink = styled(LinkContainer)`
   &:hover {
     color: ${props => props.theme.blogLink};
     transition: 0.2s ease-in;
+  }
+
+  @media only screen and (max-width: 800px) {
+    color: ${props => props.theme.link};
   }
 `
 

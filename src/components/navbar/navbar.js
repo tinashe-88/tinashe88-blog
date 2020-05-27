@@ -89,10 +89,10 @@ const Navbar = ({...props}) => {
                   <NavItems>
                     <BlogLink 
                       to="/blog/"
-                      getProps={({ isCurrent }) => {
+                      getProps={({ isCurrent, isPartiallyCurrent }) => {
                         return {
                           style: {
-                            color: isCurrent ?  
+                            color: isCurrent && isPartiallyCurrent ?  
                               `${theme.blogLink}` 
                               : '',
                             boxShadow: isCurrent ?

@@ -7,11 +7,13 @@ export const LinkContainer = styled.span`
 
 export const ButtonContainer = styled.button`
   margin: 20px;
+  border: none;
+
   &:focus {
     outline: none;
   }
 
-  @media only screen and (min-width: 500px) {
+  @media only screen and (min-width: 800px) {
     display: none;
   }
 `

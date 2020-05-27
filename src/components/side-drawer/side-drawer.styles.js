@@ -69,7 +69,7 @@ export const LinkContainer = styled(Link)`
   color: #333;
 
   &:hover, &:active {
-    color: #fa3923;
+    color: ${props => props.theme.link};
   } 
 `
 

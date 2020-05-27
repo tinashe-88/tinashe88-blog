@@ -37,7 +37,11 @@ const theme = {
   github: '#6e5494',
   link: '#333',
   navbar: '#eee',
-  hoverBg: '#f4f4f4'
+  hoverBg: '#f4f4f4',
+  homeLink: '#2CAFDA',
+  blogLink: '#F65286',
+  aboutLink: '#19A974',
+  tagsLink: '#FF982B'
 }
 
 const SideDrawer = props => {
@@ -86,12 +90,14 @@ const SideDrawer = props => {
             }}
           />
         </ImageContainer>
-        {/* Put logo here */}
         <NavigationContent>
           <ListContainer>
             <ListItems>
               <LinkContainer 
                 to="/"
+                activeStyle={{
+                  color: `${theme.homeLink}`
+                }}
               >
                 Home
               </LinkContainer>
@@ -100,6 +106,9 @@ const SideDrawer = props => {
             <ListItems>
               <LinkContainer 
                 to="/blog/"
+                activeStyle={{
+                  color: `${theme.blogLink}`
+                }}
               >
                 Blog
               </LinkContainer>
@@ -108,6 +117,9 @@ const SideDrawer = props => {
             <ListItems>
               <LinkContainer 
                 to="/about/"
+                activeStyle={{
+                  color: `${theme.aboutLink}`
+                }}
               >
                 About
               </LinkContainer>
@@ -116,6 +128,9 @@ const SideDrawer = props => {
             <ListItems>
               <LinkContainer 
                 to="/tags/"
+                activeStyle={{
+                  color: `${theme.tagsLink}`
+                }}
               >
                 Tags
               </LinkContainer>

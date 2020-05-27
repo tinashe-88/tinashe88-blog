@@ -44,7 +44,7 @@ export const LeftNav = styled.div`
     white-space: nowrap;
     margin-left: 30px;
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 800px) {
         margin-left: 0;
     }
 `
@@ -58,7 +58,7 @@ export const NavContent = styled.ul`
     transition: all 1s cubic-bezier(.19,1,.22,1);
     margin-bottom: 0;
     
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 800px) {
         /* transform: translateX(-50%);
         left: 50%;
         margin-left: 0; */
@@ -119,7 +119,7 @@ export const RightContainer = styled.div`
     padding: 0 10px;
     height: 64px;
     
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 800px) {
         display: none;
     }
 `
@@ -129,7 +129,7 @@ export const RightNav = styled.div`
     display: flex;
     align-items: center;
 
-    @media only screen and (max-width: 500px) {
+    @media only screen and (max-width: 800px) {
         display: none;
     }
 `
