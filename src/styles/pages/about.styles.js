@@ -1,6 +1,8 @@
+import { Link } from 'gatsby'
+
 import styled from 'styled-components'
 
-import { Link } from 'gatsby'
+import Button from "../../components/button/button"
 
 export const Container = styled.div`
   text-align: center;
@@ -14,6 +16,11 @@ export const TitleContainer = styled.h2`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+  margin: 30px 0;
+`
+
+export const ButtonStyles = styled(Button)`
+
 `
 
 export const LinkContainer = styled(Link)`

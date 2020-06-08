@@ -105,10 +105,11 @@ const SideDrawer = props => {
             <HrContainer/>
             <ListItems>
               <LinkContainer 
-                to="/blog/"
+                to="/blog"
                 activeStyle={{
                   color: `${theme.blogLink}`
                 }}
+                partiallyActive={true}
               >
                 Blog
               </LinkContainer>
@@ -116,7 +117,7 @@ const SideDrawer = props => {
             <HrContainer/>
             <ListItems>
               <LinkContainer 
-                to="/about/"
+                to="/about"
                 activeStyle={{
                   color: `${theme.aboutLink}`
                 }}
@@ -127,10 +128,11 @@ const SideDrawer = props => {
             <HrContainer/>
             <ListItems>
               <LinkContainer 
-                to="/tags/"
+                to="/tags"
                 activeStyle={{
                   color: `${theme.tagsLink}`
                 }}
+                partiallyActive={true}
               >
                 Tags
               </LinkContainer>

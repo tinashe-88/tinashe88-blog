@@ -1,9 +1,10 @@
 ---
 author: 'Tinashe Chiweshe'
-title: Gaming is awesome
-date: "2015-05-01T22:12:03.284Z"
-tags: ["gaming", "life"]
+title: How do you "speak" Javascript
+date: "2018-01-18T22:12:03.284Z"
+tags: ["javascript", "code"]
 image: "../../assets/images/thumbnail-art.jpg"
+description: "Speaking the language using basic syntax that is quite simple to interpret."
 ---
 
 This is my first post on my new fake blog! How exciting!

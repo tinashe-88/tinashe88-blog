@@ -28,7 +28,7 @@ function Bio() {
               {` `}
               <a href={`https://twitter.com/${social.twitter}`}>
                 Definitely give him a follow on Twitter
-              </a>
+              </a>.
             </ParagraphContainer>
           </Container>
         )

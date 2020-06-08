@@ -13,16 +13,25 @@ export const LinkContainer = styled(Link)`
   box-shadow: none;
 `
 
+export const PaginationContainer = styled.div`
+  ul {
+    padding: 0;
+  }
+`
+
 export const ListContainer = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   list-style: none;
-  padding: 0;
+  margin: 0;
 `
 
-export const ListItemsContainer = styled.div`
-
+export const ListItemsContainer = styled.li`
+  width: 50%;
+  &:last-of-type {
+    text-align: right;
+  }
 `
 
 export const PostTitle = styled.h2`

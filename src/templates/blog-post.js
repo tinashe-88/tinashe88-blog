@@ -2,12 +2,12 @@ import React from "react"
 import { graphql } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
 
-import Bio from "../components/bio/bio"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
 import Badge from '../components/badge/badge'
 import SocialShare from '../components/share-social/share-social'
 import Comments from '../components/comments/comments'
+import Bio from "../components/bio/bio"
 
 import { scale } from "../utils/typography"
 
@@ -20,7 +20,8 @@ import {
   PostMetadata,
   HrContainer,
   PostImage,
-  ImageContainer
+  ImageContainer,
+  PaginationContainer
 } from '../styles/templates/blog-post.styles'
 
 class BlogPostTemplate extends React.Component {
@@ -64,25 +65,27 @@ class BlogPostTemplate extends React.Component {
         </ImageContainer>
         <MDXRenderer>{post.body}</MDXRenderer>
         <HrContainer />
-        <Bio />
+        <Bio/>
         <SocialShare />
         <Comments />
-        <ListContainer>
-          <ListItemsContainer>
-            {previous && (
-              <LinkContainer to={`blog${previous.fields.slug}`} rel="prev">
-                ← {previous.frontmatter.title}
-              </LinkContainer>
-            )}
-          </ListItemsContainer>
-          <ListItemsContainer>
-            {next && (
-              <LinkContainer to={`blog${next.fields.slug}`} rel="next">
-                {next.frontmatter.title} →
-              </LinkContainer>
-            )}
-          </ListItemsContainer>
-        </ListContainer>
+        <PaginationContainer>
+          <ListContainer>
+            <ListItemsContainer>
+              {previous && (
+                <LinkContainer to={`blog${previous.fields.slug}`} rel="prev">
+                  ← {previous.frontmatter.title}
+                </LinkContainer>
+              )}
+            </ListItemsContainer>
+            <ListItemsContainer>
+              {next && (
+                <LinkContainer to={`blog${next.fields.slug}`} rel="next">
+                  {next.frontmatter.title} →
+                </LinkContainer>
+              )}
+            </ListItemsContainer>
+          </ListContainer>
+        </PaginationContainer>
       </Layout>
     )
   }

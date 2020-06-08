@@ -5,6 +5,14 @@ export const LayoutContainer = styled.div`
   margin-left: auto;
   margin-right: auto;
   margin-top: 10px;
+
+  ul {
+    padding: 0 50px;
+
+    @media only screen and (max-width: 500px) {
+      padding: 0;
+    }
+  }
 `
 
 export const TitleContainer = styled.h1`

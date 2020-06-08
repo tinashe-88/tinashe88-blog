@@ -40,7 +40,7 @@ class Tags extends React.Component {
                 )
               })}
             </ListContainer>
-            <AllTagsLink to="/tags/">All tags</AllTagsLink>
+            <AllTagsLink to="/tags">All tags</AllTagsLink>
           </BodyContainer>
       </Layout> 
     )

@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
-import Button from "../components/button/button"
+
 import { ThemeProvider } from 'styled-components'
 
 import {
@@ -11,7 +11,8 @@ import {
   TitleContainer,
   ButtonContainer,
   LinkContainer,
-  ParagraphContainer
+  ParagraphContainer,
+  ButtonStyles
 } from '../styles/pages/about.styles'
 
 const theme = {
@@ -29,6 +30,7 @@ const AboutPage = ({ data, location }) => {
           <TitleContainer>
               About
           </TitleContainer>
+          
           <ParagraphContainer>
             My name's Tinashe and I'm from Harare, Zimbabwe but I
             grew up inbetween Johannesburg and Cape Town, South
@@ -52,7 +54,7 @@ const AboutPage = ({ data, location }) => {
           </ParagraphContainer>
           <ButtonContainer>
             <LinkContainer to="/blog/">
-              <Button marginTop="35px">The Blog</Button>
+              <ButtonStyles>The Blog</ButtonStyles>
             </LinkContainer>
           </ButtonContainer>
         </Container>

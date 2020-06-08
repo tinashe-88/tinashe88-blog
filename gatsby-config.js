@@ -4,7 +4,7 @@ module.exports = {
     title: `tinashe88 blog`,
     author: `Tinashe Chiweshe`,
     description: `A personal blog`,
-    siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
+    siteUrl: `https://tinashe88blog.com`,
     social: {
       twitter: `@tinashe_88`,
       instagram: `tinashe88`,
