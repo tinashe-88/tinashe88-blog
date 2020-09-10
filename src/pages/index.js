@@ -3,6 +3,8 @@ import React from "react"
 import Layout from "../components/layout/layout"
 import SEO from "../components/seo/seo"
 
+import SiteLogo from '../components/logo/logo'
+
 import {
   TitleContainer,
   ButtonContainer,
@@ -30,10 +32,13 @@ const IndexPage = ({ location }) => {
             keywords={[`blog`, `javascript`, `react`, `node`, `tinashe88`]}
           />
           <ImageContainer>
-            <img 
-              style={{ margin: 0, width: "500px", height: "500px" }} 
-              src="./blog-logo.svg" 
-              alt="blog logo" 
+            <SiteLogo 
+              style={{ 
+                margin: 0, 
+                width: "500px", 
+                height: "500px",
+              }}
+              alt="blog logo"
             />
           </ImageContainer>
           <TitleContainer>
@@ -53,7 +58,7 @@ const IndexPage = ({ location }) => {
           </p>
           <p>Thanks for being here!</p>
           <ButtonContainer>
-            <LinkContainer to="/blog/">
+            <LinkContainer to="/blog">
               <ButtonStyles>The Blog</ButtonStyles>
             </LinkContainer>
           </ButtonContainer>

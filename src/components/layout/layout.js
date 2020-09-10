@@ -34,9 +34,9 @@ class Layout extends React.Component {
 
   render() {
     const { location, title, children } = this.props
-    const blogPath = `${__PATH_PREFIX__}/blog/`
-    const aboutPath = `${__PATH_PREFIX__}/about/`
-    const tagsPath = `${__PATH_PREFIX__}/tags/`
+    const blogPath = `${__PATH_PREFIX__}/blog`
+    const aboutPath = `${__PATH_PREFIX__}/about`
+    const tagsPath = `${__PATH_PREFIX__}/tags`
     let { sideDrawOpen } = this.state
     let header
 
@@ -46,7 +46,7 @@ class Layout extends React.Component {
       header = (
         <TitleContainer>
           <LinkContainer
-            to={location.pathname === blogPath ? `/blog/` : `/`}
+            to={location.pathname === blogPath ? `/blog` : `/`}
           >
             {title}
           </LinkContainer>
@@ -61,7 +61,7 @@ class Layout extends React.Component {
           }}
         >
           <LinkContainer
-            to={`/blog/`}
+            to={`/blog`}
           >
             {title}
           </LinkContainer>

@@ -1,0 +1,267 @@
+---
+author: 'Tinashe Chiweshe'
+title: More Operators and Operator precedence
+date: "2016-07-03T12:10:02.169Z"
+description: Talking about operators and operator precendence
+tags: ["javascript", "code", "basic"]
+image: "../../assets/images/thumbnail-colours.jpg"
+---
+
+### Exploring other operators
+
+So far, we've talked about arithmetic operators (math), now's the time
+to introduce the rest of the operators "gang". However, I would like to 
+start off with precedence because it's important to understand.
+
+### Operator precendence
+
+Operator precedence determines how operators are calculated in the context of 
+each other. Higher precedence operators become the operands of operators with 
+lower precedence.
+
+This example we'll have to say that we want to calculate if Meliodas is 
+of legal drinking age (18) based on the year in which he was born.
+
+```js
+var meliodas = 568;
+var legalAge = 18;
+var currentYear = 2016;
+```
+
+We have created 3 variables for this demonstration. 
+- Defined the year Meliodas was born
+- The legal drinking age variable 
+- The current year
+
+We can do is calculate the age and compare it with the legal drinking age 
+variable.
+
+```js
+// ...
+var canLegallyDrink = currentYear - meliodas >= legalAge;
+
+console.log(canLegallyDrink);
+// Should console out true
+```
+As you can see, we have two operators, one mathematical and the other logical 
+all in one line. How does JavaScript know which operator to execute first?
+
+Now, to figure out why this calculation works, we have to think about operator 
+precedence, meaning which operator is executed first.
+
+First off, we minus the current year variable from Meliodas and that 
+will calculate his age. After that, we want to test if Meliodas' birth year is 
+greater or equal to the legal age variable.
+
+After all the other operators have done their job, our minus (`-`) and our 
+greater than or equal to (`>=`) operator, we end up with the Boolean result of 
+`true` and that result is assigned to the `canLegallyDrink` variable.
+
+### Who outranks whom?
+
+Check out this [operator precedence](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_Precedence) 
+resource for an indepth look on the matter. Whenever we need to check if 
+something works, check the table in the resource above to verify the order in 
+which your operators will work.
+
+Let's look at another example where we are going to calculate the overall 
+(test and ODI cricket) batting average of, let's say Brian Lara. For those of 
+you who don't know cricket, all I'm doing is calculating the average number of 
+points Brian Lara has attained in both Test and One Day International cricket
+(ODI).
+
+```js
+// Test Runs
+var testRuns = 11953;
+var testInnings = 232;
+var testAverage = testRuns / testInnings;
+
+// ODI Runs
+var odiRuns = 10405;
+var odiInnings = 289;
+var odiAverage = odiRuns / odiInnings;
+
+var totalAverage = testAverage + odiAverage / 2
+
+console.log(totalAverage)
+// Should ouput 69.52328182794416
+```
+
+Right, this might look excessive but it is quite straight forward. We gather 
+the data that we need and store them in their respective variables. All the 
+data about Brian Lara's Test career will have the total amount of runs he 
+achieved, the number of times he batted and finally, the variable storing the 
+result of the calculation that is needed to find his average in just Test 
+cricket.
+
+We do the same for the ODI data.
+
+Once we have both datasets,the average can be calculated as the sum and 
+then divide it by two.
+
+One last thing to note here. The `totalAverage` calculation has 2 operators
+that do different things. One divides, one adds, we can clearly see that. Now 
+what if I told you that 69.52 is not the correct answer. Can you guess why I'm 
+suggesting that the value printed out is incorrect? If you can great, if not 
+that's not a problem.
+
+### Taking it way back
+
+Precendence is at play again in this example. If you remember from Math class
+the concept of BODMAS 
+- **B**rackets 
+- **O**rders (Powers, Square roots, etc.)
+- **D**ivision & **M**ultiplaction 
+- **A**ddition & **S**ubtraction 
+
+It was the order of operations (precedence) that we were being taught. 
+Brackets has the highest precendence and it's all downhill from there.
+
+In this instance, the division symbol has more precedence over the addition
+symbol therefore the calculation with the division is executed first followed
+by the addition resulting in the incorrect calculation.
+
+How can we sort that out? With the simple use of brackets.
+
+```js
+// ...
+var totalAverage = (testAverage + odiAverage) / 2
+
+console.log(totalAverage)
+// Should ouput 43.76250596587519
+```
+
+If you have a look at the resource which points to the order of 
+precendence table you should be able to find that the brackets (Grouping),
+or as we like to call them - parentheses, is at the top of the food chain.
+Wrapping the averages together will result in that calculation added first
+followed by the division of 2.
+
+Hopefully, the second example was easy to ingest. Order of precendence is a 
+real thing so be vary weary when you're calculating something. Have in the
+back of your mind the order of precedence that your operator could be.
+
+### Understanding Associativity
+
+Associativity means the direction in which the operation is executed.
+Left associativity is processed "left to right" while right associativity, 
+which consist of assignment operators, is interpreted from "right to left".
+
+```js
+var a = b = 12
+// OR ...
+var a = (b = 12)
+```
+
+The expected result is x and y get the 12 value. The assignment operator 
+returns the value that is assigned. In simpler terms, the value is "asking" 
+where it should be stored. Firstly, the value is stored in the y variable 
+followed by the x variable.
+
+> Note: The order of evaluation is always left-to-right regardless of 
+> associativity.
+
+```js
+var a, b, c;
+
+a = (8 - 3) * 4 / 2;
+// 5 * 4 / 2
+// 20 / 2 or 5 * 2
+// result 10
+console.log(a);
+```
+
+### Assignment Operators
+
+Assigns a value to its left operand based on the value in the right operand.
+
+- **Assignment opertaor** (`=`)
+- **Addition Assignment operator** (`+=`)
+- **Subtraction Assignment operator** (`-=`)
+- **Multiplication Assignment operator** (`*=`)
+- **Division Assignment operator** (`/=`)
+- **Remainder Assignment operator** (`%=`)
+
+```js
+var a, b, c, d, e;
+
+a = 10
+b = 14
+c = 3
+d = 8
+e = 9
+
+a += 4
+// a = a + 4
+b -= 7
+// b = b - 7
+c *= 3
+// c = c * 3
+d /= 2
+// d = d * 2
+e %= 2
+// e = e % 2
+
+console.log(a, b, c, d, e)
+// 14 7 9 4 1
+```
+
+As you can see, we have different assignment operators on display. The 
+addition assignment operator adds, the subtraction assignment operator 
+subtracts, multiplication assignment operator multiplies, the division 
+assignment operator divides and the remainder assignment operator divides a
+variable by the value of the right operand to a variable and assigns that 
+result to the variable.
+
+The assignment operator has a low or almost one of the lowest precedences 
+because we want the assignment to occur at the last step. 
+
+### Comparison Operator
+
+Comparison operators compare their operands and return a logical value based 
+on whether the comparison is true. Operands can either be one of the following
+values:
+- Numerical
+- String 
+- Logical
+- Object
+
+The comparison of Strings is based on the standard of lexicographical ordering, 
+using unicode values. In most cases, if the two operands are not of a similar 
+type then JavaScript will attempt to convert them to the appropriate type for 
+the comparison. This behaviour results in comparing the operands numerically.
+
+> Note:
+> Exceptions to type conversion within comparisons include the `===` and `!==` 
+> operators, which perform strict equality and inequality comparisons. These 
+> exceptions do not attempt to convert the operands to compatible types before 
+> checking equality.
+
+Here's a small table to highlight the different comparison operators.
+
+| Operator Name | What it does |
+| ----------- | ----------- |
+| Equal | Returns a value of true if operands are equal. (`==`)|
+| Strict equal | The value returned is true if the operands are equal as well as of the same type. (`===`)|
+| Not equal | Will return true if the operands are not equal. (`!=`)|
+| Strict not equal | The value of true is returned if the operands are of the same type but not equal, or are of a different type. (`!==`)|
+
+### Typeof Operator
+
+I want to talk about one more operator and that is the typeof operator.
+
+The `typeof` operator is a bit different than the few that we've looked at. Up 
+until this point, the operators we have used always required two things to 
+compare, to add or to multiply.
+
+```js
+var someString = 'A String';
+var someNumber = 10;
+var someBoolean = false;
+
+console.log(typeof someString, typeof someNumber, typeof someBoolean);
+// Should print: string number boolean
+```
+
+The typeof operator will return a string that indicates the type of 
+the unevaluated operand.

@@ -17,10 +17,11 @@
     "babel-plugin-styled-components": "^1.10.0",
     "disqus-react": "^1.0.8",
     "gatsby": "^2.3.25",
-    "gatsby-cli": "^2.12.1",
+    "gatsby-cli": "^2.12.51",
     "gatsby-image": "^2.0.39",
     "gatsby-plugin-feed-mdx": "^1.0.0",
     "gatsby-plugin-google-analytics": "^2.0.18",
+    "gatsby-plugin-lodash": "^3.3.6",
     "gatsby-plugin-manifest": "^2.0.29",
     "gatsby-plugin-mdx": "^1.0.52",
     "gatsby-plugin-netlify-cms": "^4.0.0",
@@ -50,6 +51,7 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
+    "lodash.kebabcase": "^4.1.1",
     "prettier": "^1.17.0"
   },
   "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",

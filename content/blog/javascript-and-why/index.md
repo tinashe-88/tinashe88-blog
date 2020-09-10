@@ -1,7 +1,7 @@
 ---
 author: 'Tinashe Chiweshe'
 title: What is Javascript and why should I learn it?
-date: "2018-01-12"
+date: "2016-06-12T10:32:40.284Z"
 description: "A condenced introduction to Javascript"
 tags: ["javascript", "code"]
 image: "../../assets/images/thumbnail-pink.jpg"
