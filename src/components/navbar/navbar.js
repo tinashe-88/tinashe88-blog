@@ -44,18 +44,18 @@ const theme = {
 
 const Navbar = ({...props}) => {
     const data = useStaticQuery(graphql`
-        query {
-            site {
-                siteMetadata {
-                  siteUrl
-                  social {
-                    twitter
-                    instagram
-                    github
-                  }
-                }
+      query {
+        site {
+          siteMetadata {
+            siteUrl
+            social {
+              twitter
+              instagram
+              github
             }
+          }
         }
+      }
     `)
     const socialHandle = data.site.siteMetadata.social
 

@@ -31,15 +31,13 @@ const theme = {
   link: '#333',
 }
 
-class Blog extends React.Component {
-  render() {
-    const { data } = this.props
+const Blog = ({ data,location }) => {    
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMdx.edges
-
+    console.log(location)
     return (
       <ThemeProvider theme={theme}>
-        <Layout location={this.props.location} title={siteTitle}>
+        <Layout location={location} title={siteTitle}>
           <SEO title="All posts" />
           <CardContainer>
             {posts.map(({ node }) => {
@@ -50,7 +48,7 @@ class Blog extends React.Component {
                   <CardTextContainer>
                     <CardTitleContainer>
                       <LinkContainer
-                        to={`blog${node.fields.slug}`}
+                        to={`${location.pathname}${node.fields.slug}`}
                       >
                         {title}
                       </LinkContainer>
@@ -94,7 +92,6 @@ class Blog extends React.Component {
         </Layout>
       </ThemeProvider>
     )
-  }
 }
 
 export default Blog

@@ -24,71 +24,69 @@ import {
   PaginationContainer
 } from '../styles/templates/blog-post.styles'
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = this.props.data.mdx
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const { previous, next } = this.props.pageContext
+const BlogPostTemplate = ({ data, pageContext, location }) => {
+  const post = data.mdx
+  const siteTitle = data.site.siteMetadata.title
+  const { previous, next } = pageContext
 
-    return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO
+        title={post.frontmatter.title}
+        description={post.frontmatter.description || post.excerpt}
+      />
+      <PostTitle>{post.frontmatter.title}</PostTitle>
+      <PostMetadata
+        style={{
+          ...scale(-1 / 5)
+        }}
+      >
+        {post.frontmatter.author}
+        {post.frontmatter.date}
+        <TagsContainer>
+          {post.frontmatter.tags.map(tag => {
+            return (
+              <Badge key={tag}>
+                <LinkContainer 
+                  to={`tags/${tag}/`}
+                >
+                  <span>{tag}</span>
+                </LinkContainer>
+              </Badge>
+            )
+          })}
+        </TagsContainer>
+      </PostMetadata>
+      <ImageContainer>
+        <PostImage
+          fluid={post.frontmatter.image.childImageSharp.fluid}
         />
-        <PostTitle>{post.frontmatter.title}</PostTitle>
-        <PostMetadata
-          style={{
-            ...scale(-1 / 5)
-          }}
-        >
-          {post.frontmatter.author}
-          {post.frontmatter.date}
-          <TagsContainer>
-            {post.frontmatter.tags.map(tag => {
-              return (
-                <Badge key={tag}>
-                  <LinkContainer 
-                    to={`tags/${tag}/`}
-                  >
-                    <span>{tag}</span>
-                  </LinkContainer>
-                </Badge>
-              )
-            })}
-          </TagsContainer>
-        </PostMetadata>
-        <ImageContainer>
-          <PostImage
-            fluid={post.frontmatter.image.childImageSharp.fluid}
-          />
-        </ImageContainer>
-        <MDXRenderer>{post.body}</MDXRenderer>
-        <HrContainer />
-        <Bio/>
-        <SocialShare />
-        <Comments />
-        <PaginationContainer>
-          <ListContainer>
-            <ListItemsContainer>
-              {previous && (
-                <LinkContainer to={`blog${previous.fields.slug}`} rel="prev">
-                  ← {previous.frontmatter.title}
-                </LinkContainer>
-              )}
-            </ListItemsContainer>
-            <ListItemsContainer>
-              {next && (
-                <LinkContainer to={`blog${next.fields.slug}`} rel="next">
-                  {next.frontmatter.title} →
-                </LinkContainer>
-              )}
-            </ListItemsContainer>
-          </ListContainer>
-        </PaginationContainer>
-      </Layout>
-    )
-  }
+      </ImageContainer>
+      <MDXRenderer>{post.body}</MDXRenderer>
+      <HrContainer />
+      <Bio/>
+      <SocialShare />
+      <Comments />
+      <PaginationContainer>
+        <ListContainer>
+          <ListItemsContainer>
+            {previous && (
+              <LinkContainer to={`blog${previous.fields.slug}`} rel="prev">
+                ← {previous.frontmatter.title}
+              </LinkContainer>
+            )}
+          </ListItemsContainer>
+          <ListItemsContainer>
+            {next && (
+              <LinkContainer to={`blog${next.fields.slug}`} rel="next">
+                {next.frontmatter.title} →
+              </LinkContainer>
+            )}
+          </ListItemsContainer>
+        </ListContainer>
+      </PaginationContainer>
+    </Layout>
+  )
 }
 
 export default BlogPostTemplate
