@@ -195,3 +195,45 @@ to keep in mind that:
 
 - Finally, we can save these results into our variables.
 
+### Function Expressions
+
+We first discussed the basics of functions and that we declared functions using function statements. There's another way of declaring functions in Java Script, and that is by using function expressions.
+
+All the logic of functions that we went over in the last post still works in the same manner. We just write the function in a slightly different way. Even under the hood of Java Script, it also works a little bit differently, but we'll go over that a bit later. We just need to know at this point that we have both function statements and expressions.
+
+```js
+// Function statement
+
+// function whereDoYouEat(name, restaurant){
+
+// }
+
+// Function expression 
+var whereDoYouEat = function(name, restaurant){
+  switch(restaurant){
+    case 'Jacobs':
+      return name + ' likes to eat here'
+    case 'Tyrones':
+      return name + ' spends most nights here'
+    case 'Speedies':
+      return name + ' enjoys eating here'
+    default:
+      return name + ' does not anywhere eat at all!'
+  }
+}
+
+console.log(whereDoYouEat('Asuka', 'Jacobs'))
+console.log(whereDoYouEat('Cether', 'Tyrones'))
+console.log(whereDoYouEat('Gothrian', 'Speedies'))
+```
+
+When we write a function expression we start by writing the function without the name, still using the function keyword and then right after that we put the arguments list, then all we do is assign this function to a variable.
+
+We declare a variable Let's call this, `whereDoYouEat` this is a function where we paste in the restaurant and then the function tells us where that person eats.
+
+Our `whereDoYouEat` variable, now holds the function we just created.
+
+The importance of this whole concept is that whenever JavaScript expects a value we always have to write an expression.
+
+Function statements just perform actions. They do things but they don't produce immediate results, ie: if...else statements, while loops or even a function declaration.
+The key point to takeaway from here is that function expressions produce an immediate result, while function declarations do not.

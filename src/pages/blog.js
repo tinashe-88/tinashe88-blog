@@ -48,7 +48,7 @@ const Blog = ({ data,location }) => {
                   <CardTextContainer>
                     <CardTitleContainer>
                       <LinkContainer
-                        to={`${location.pathname}${node.fields.slug}`}
+                        to={`blog${node.fields.slug}`}
                       >
                         {title}
                       </LinkContainer>
